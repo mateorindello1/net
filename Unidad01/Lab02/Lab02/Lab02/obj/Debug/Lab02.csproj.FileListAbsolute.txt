@@ -1,8 +1,0 @@
-C:\Users\mateo\net\Unidad01\Lab02\Lab02\Lab02\bin\Debug\Lab02.exe.config
-C:\Users\mateo\net\Unidad01\Lab02\Lab02\Lab02\bin\Debug\Lab02.exe
-C:\Users\mateo\net\Unidad01\Lab02\Lab02\Lab02\bin\Debug\Lab02.pdb
-C:\Users\mateo\net\Unidad01\Lab02\Lab02\Lab02\obj\Debug\Lab02.csproj.AssemblyReference.cache
-C:\Users\mateo\net\Unidad01\Lab02\Lab02\Lab02\obj\Debug\Lab02.csproj.SuggestedBindingRedirects.cache
-C:\Users\mateo\net\Unidad01\Lab02\Lab02\Lab02\obj\Debug\Lab02.csproj.CoreCompileInputs.cache
-C:\Users\mateo\net\Unidad01\Lab02\Lab02\Lab02\obj\Debug\Lab02.exe
-C:\Users\mateo\net\Unidad01\Lab02\Lab02\Lab02\obj\Debug\Lab02.pdb
