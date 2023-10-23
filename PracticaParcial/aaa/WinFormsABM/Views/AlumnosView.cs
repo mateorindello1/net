@@ -55,7 +55,7 @@ namespace WinFormsABM
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             var selectedLegajo = int.Parse(dataGridView1.SelectedRows[0].Cells["Legajo"].Value.ToString());
-            var alumno = new Alumno(selectedLegajo, dataGridView1.SelectedRows[0].Cells["Nombre"].Value.ToString(), 
+            var alumno = new Alumno(selectedLegajo, dataGridView1.SelectedRows[0].Cells["Nombre"].Value.ToString(),
                                     dataGridView1.SelectedRows[0].Cells["Apellido"].Value.ToString(),
                                     dataGridView1.SelectedRows[0].Cells["Email"].Value.ToString());
             string cadena = $"¿Desea eliminar al siguente Alumno?\nApellido y nombre: {alumno.Apellido}, {alumno.Nombre}\nLegajo {alumno.Legajo}";
@@ -64,7 +64,7 @@ namespace WinFormsABM
             if (resultado == DialogResult.Yes)
             {
                 var legajo = await AlumnoService.Delete(selectedLegajo);
-                if (legajo==0)
+                if (legajo == 0)
                 {
                     MessageBox.Show("No se pudo eliminar el Alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

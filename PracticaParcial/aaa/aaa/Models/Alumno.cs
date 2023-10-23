@@ -7,6 +7,15 @@ namespace WebApi.Models;
 
 public partial class Alumno
 {
+    [Key]
+    public int Legajo { get; set; }
+
+    public string Nombre { get; set; } = null!;
+
+    public string Apellido { get; set; } = null!;
+
+    public string Email { get; set; } = null!;
+
     public Alumno(int legajo, string nombre, string apellido, string email)
     {
         Nombre = nombre;
@@ -28,12 +37,4 @@ public partial class Alumno
 
         return false;
     }
-    [Key]
-    public int Legajo { get; set; }
-
-    public string Nombre { get; set; } = null!;
-
-    public string Apellido { get; set; } = null!;
-
-    public string Email { get; set; } = null!;
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using WebApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.Context;
 
@@ -21,7 +21,6 @@ public partial class DbExamenContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\Users\\mateo\\Downloads\\DBEvaluacionUsuarios.mdf;Integrated Security=True;Connect Timeout=30");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,8 +29,9 @@ public partial class DbExamenContext : DbContext
 
         modelBuilder.Entity<Alumno>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Table__3214EC075D001ADA");
+            entity.HasKey(e => e.Legajo).HasName("PK__tmp_ms_x__0E01039B5048B8EA");
 
+            entity.Property(e => e.Legajo).ValueGeneratedNever();
             entity.Property(e => e.Apellido)
                 .HasMaxLength(50)
                 .IsUnicode(false);
