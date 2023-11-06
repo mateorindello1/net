@@ -22,7 +22,7 @@ namespace WinFormsAcademia.Servicios
         public static async Task<List<Persona>> Get(int? rol)
         {
             string requestUri = baseUrl;
-            if (rol is not null) requestUri += $"rol={rol}";
+            if (rol is not null) requestUri += $"?rol={rol}";
             var response = await httpClient.GetAsync($"{requestUri}");
             if (response.IsSuccessStatusCode)
             {
@@ -74,10 +74,11 @@ namespace WinFormsAcademia.Servicios
             else return null;
         }
 
-        public static async Task<bool> UsuarioDisponible(string nombreUsuario)
+        public static bool UsuarioDisponible(string nombreUsuario)
         {
-            var content = new StringContent(nombreUsuario, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync($"{baseUrl}/autenticar", content);
+            var nombreUsuarioJson = JsonConvert.SerializeObject(nombreUsuario);
+            var content = new StringContent(nombreUsuarioJson, Encoding.UTF8, "application/json");
+            var response = httpClient.PostAsync($"{baseUrl}/usuariodisponible", content).Result;
             return (response.IsSuccessStatusCode);
         }
     }

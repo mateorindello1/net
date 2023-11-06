@@ -48,18 +48,39 @@ namespace WinFormsAcademia
         }
         private void btnAlumnos_Click(object sender, EventArgs e)
         {
+            this.Hide();
             FormPersona alumnosCrud = new FormPersona(0);
+            alumnosCrud.StartPosition = FormStartPosition.Manual;
+            alumnosCrud.Location = new Point(
+                MdiParent.Location.X + (MdiParent.Width - alumnosCrud.Width) / 2,
+                MdiParent.Location.Y + (MdiParent.Height - alumnosCrud.Height) / 2
+            );
             alumnosCrud.ShowDialog();
+            this.Show();
         }
         private void btnDocentes_Click(object sender, EventArgs e)
         {
+            this.Hide();
             FormPersona docentesCrud = new FormPersona(1);
+            docentesCrud.StartPosition = FormStartPosition.Manual;
+            docentesCrud.Location = new Point(
+                MdiParent.Location.X + (MdiParent.Width - docentesCrud.Width) / 2,
+                MdiParent.Location.Y + (MdiParent.Height - docentesCrud.Height) / 2
+            );
             docentesCrud.ShowDialog();
+            this.Show();
         }
         private void btnAdmin_Click(object sender, EventArgs e)
         {
+            this.Hide();
             FormPersona adminCrud = new FormPersona(2);
+            adminCrud.StartPosition = FormStartPosition.Manual;
+            adminCrud.Location = new Point(
+                MdiParent.Location.X + (MdiParent.Width - adminCrud.Width) / 2,
+                MdiParent.Location.Y + (MdiParent.Height - adminCrud.Height) / 2
+            );
             adminCrud.ShowDialog();
+            this.Show();
         }
         private void btnExit_Click(object sender, EventArgs e)
         {

@@ -71,7 +71,6 @@ namespace WebApiAcademia.Controllers
             } else persona = await _context.Personas.FindAsync(legajo);
 
             if (persona is null) return NotFound();
-
             return persona;
         }
 
@@ -79,6 +78,10 @@ namespace WebApiAcademia.Controllers
         [HttpPut("{legajo}")]
         public async Task<IActionResult> PutPersona(int legajo, Persona persona)
         {
+            //_context.Entry(persona).Reference(p => p.IdPlanNavigation).Load();
+            //_context.Entry(persona).Collection(p => p.Dictados).Load();
+            //_context.Entry(persona).Collection(p => p.Inscripciones).Load();
+
             if (legajo != persona.Legajo)
             {
                 return BadRequest();

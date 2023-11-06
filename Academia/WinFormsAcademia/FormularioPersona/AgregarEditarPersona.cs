@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using WinFormsAcademia.Servicios;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace WinFormsAcademia.FormularioPersona
 {
@@ -13,32 +14,39 @@ namespace WinFormsAcademia.FormularioPersona
             InitializeComponent();
             CargarPlanes();
             Text = "Agregar persona";
-
+            cmbTipo.SelectedIndex = 0;
         }
 
         public AgregarEditarPersona(Persona persona)
         {
             InitializeComponent();
             CargarPlanes();
-            Rellenar();
             editMode = true;
             Text = "Editar persona";
+            lblId.Visible = true;
             txtId.Visible = true;
             personaAEditar = persona;
-            button1.Text = "Guardar";
-            button3.Visible = true;
+            btnGuardar.Text = "Guardar";
+            btnReestablecer.Visible = true;
+            Rellenar();
         }
 
         private void Rellenar()
         {
-            txtId.Text = personaAEditar.Legajo.ToString();
-            txtApellido.Text = personaAEditar.Apellido;
-            txtNombre.Text = personaAEditar.Nombre;
-            txtDireccion.Text = personaAEditar.Direccion;
-            txtEmail.Text = personaAEditar.Email;
-            txtTelefono.Text = personaAEditar.Telefono;
-            cmbPlan.Text = personaAEditar.IdPlan.ToString();
-            cmbTipo.SelectedIndex = personaAEditar.TipoUsuario;
+            if (personaAEditar is not null)
+            {
+                txtId.Text = personaAEditar.Legajo.ToString();
+                txtApellido.Text = personaAEditar.Apellido;
+                txtNombre.Text = personaAEditar.Nombre;
+                txtDireccion.Text = personaAEditar.Direccion;
+                txtEmail.Text = personaAEditar.Email;
+                txtTelefono.Text = personaAEditar.Telefono;
+                cmbTipo.SelectedIndex = personaAEditar.TipoUsuario;
+                txtUsuario.Text = personaAEditar.NombreUsuario;
+                txtContraseña.Text = personaAEditar.Password;
+                cmbPlan.SelectedValue = personaAEditar.IdPlan;
+                maskedTextBox1.Text = personaAEditar.FechaNacimiento.ToString("dd/MM/yyyy");
+            }
         }
 
         private async void CargarPlanes()
@@ -47,8 +55,8 @@ namespace WinFormsAcademia.FormularioPersona
             var planes = await PlanServicios.Get();
             // Enlaza la lista de especialidades al ComboBox
             cmbPlan.DataSource = planes;
-            cmbPlan.DisplayMember = "descPlan"; // Establece la propiedad que se mostrará en el ComboBox
-            cmbPlan.ValueMember = "idPlan"; // Establece la propiedad que se utilizará como valor seleccionado
+            cmbPlan.DisplayMember = "Descripcion"; // Establece la propiedad que se mostrará en el ComboBox
+            cmbPlan.ValueMember = "IdPlan"; // Establece la propiedad que se utilizará como valor seleccionado
             if (cmbPlan.Items.Count > 0) { cmbPlan.SelectedIndex = 0; } else { cmbPlan.Enabled = false; }
         }
 
@@ -57,43 +65,55 @@ namespace WinFormsAcademia.FormularioPersona
             if (txtApellido.Text.Length < 2 ||
                 txtDireccion.Text.Length < 2 ||
                 txtNombre.Text.Length < 2 ||
-                ValidarEmail(txtEmail.Text) ||
-                cmbPlan.DisplayMember.Length < 2 ||
+                !ValidarEmail(txtEmail.Text) ||
+                !ValidarFecha(maskedTextBox1.Text) ||
+                cmbPlan.SelectedItem.ToString().Length < 1 ||
+                cmbTipo.SelectedItem.ToString().Length < 1 ||
                 txtTelefono.Text.Length < 2 ||
-                txtUsuario.Text.Length < 5 ||
+                !ValidarUsuario(txtUsuario.Text) ||
                 txtContraseña.Text.Length < 5)
             {
-                button1.Enabled = false;
                 return false; // Al menos uno de los campos está vacío o en blanco.
             }
-            button1.Enabled = true;
             return true; // Todos los campos son válidos.
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private bool ValidarFecha(string fecha)
+        {
+            string fechaIngresada = maskedTextBox1.Text;
+            DateTime fechaConvertida;
+            if (DateTime.TryParseExact(fechaIngresada, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaConvertida))
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void btnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
                 //Crear nueva persona
-                Persona nuevaPersona = new Persona()
-                {
-                    Legajo = Int32.Parse(txtId.Text),
-                    Apellido = txtApellido.Text,
-                    Nombre = txtNombre.Text,
-                    Direccion = txtDireccion.Text,
-                    Email = txtEmail.Text,
-                    FechaNacimiento = DateTime.Now,
-                    IdPlan = (int)cmbPlan.SelectedValue,
-                    Telefono = txtTelefono.Text,
-                    NombreUsuario = txtUsuario.Text,
-                    Password = txtContraseña.Text,
-                    TipoUsuario = cmbTipo.SelectedIndex,
-                };
+                Persona nuevaPersona = await PersonaServicios.GetOne(Int32.Parse(txtId.Text), null);
+
+                nuevaPersona.Legajo = Int32.Parse(txtId.Text);
+                nuevaPersona.Apellido = txtApellido.Text;
+                nuevaPersona.Nombre = txtNombre.Text;
+                nuevaPersona.Direccion = txtDireccion.Text;
+                nuevaPersona.Email = txtEmail.Text;
+                DateTime fechaNac;
+                fechaNac = DateTime.Parse(maskedTextBox1.Text);
+                nuevaPersona.FechaNacimiento = fechaNac;
+                nuevaPersona.IdPlan = (int)cmbPlan.SelectedValue;
+                nuevaPersona.Telefono = txtTelefono.Text;
+                nuevaPersona.NombreUsuario = txtUsuario.Text;
+                nuevaPersona.Password = txtContraseña.Text;
+                nuevaPersona.TipoUsuario = cmbTipo.SelectedIndex;
                 if (editMode)
                 {
                     var ok = await PersonaServicios.Update(nuevaPersona);
@@ -112,7 +132,7 @@ namespace WinFormsAcademia.FormularioPersona
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnReestablecer_Click(object sender, EventArgs e)
         {
             Rellenar();
         }
@@ -150,14 +170,37 @@ namespace WinFormsAcademia.FormularioPersona
             }
         }
 
-        private async void txtUsuario_Leave(object sender, EventArgs e)
+        private void txtUsuario_Leave(object sender, EventArgs e)
         {
-            lblErrUser.Visible = (txtUsuario.Text.Length > 0 && !(await PersonaServicios.UsuarioDisponible(txtUsuario.Text)));
+            lblErrUser.Visible = !ValidarUsuario(txtUsuario.Text);
+        }
+
+        private bool ValidarUsuario(string text)
+        {
+            if (txtUsuario.Text.Length <5) return false;
+            if (editMode && personaAEditar.NombreUsuario == txtUsuario.Text)
+            {
+                return true;
+            }
+            else if (txtUsuario.Text.Length >= 5)
+            {
+                return PersonaServicios.UsuarioDisponible(txtUsuario.Text);
+            }
+            else return false;
         }
 
         private void chkPass_CheckedChanged(object sender, EventArgs e)
         {
             txtContraseña.UseSystemPasswordChar = !chkPass.Checked;
+        }
+
+        private void maskedTextBox1_Leave(object sender, EventArgs e)
+        {
+            string fechaIngresada = maskedTextBox1.Text;
+            if (fechaIngresada.Contains("-"))
+            {
+                maskedTextBox1.Text = string.Empty;
+            }
         }
     }
 }

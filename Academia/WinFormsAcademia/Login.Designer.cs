@@ -37,6 +37,7 @@
             chkShowPw = new CheckBox();
             pictureBox3 = new PictureBox();
             lblError = new Label();
+            lblIngresando = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -55,12 +56,13 @@
             // txtUsuario
             // 
             txtUsuario.Cursor = Cursors.IBeam;
-            txtUsuario.Location = new Point(281, 229);
+            txtUsuario.Location = new Point(295, 229);
             txtUsuario.MaxLength = 20;
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Usuario";
             txtUsuario.Size = new Size(167, 23);
             txtUsuario.TabIndex = 1;
+            txtUsuario.Enter += txtUsuarioPassword_Enter;
             txtUsuario.KeyPress += txt_KeyPress;
             txtUsuario.KeyUp += txt_KeyUp;
             // 
@@ -68,7 +70,7 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.round_account_button_with_user_inside_icon_icons_com_72596;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(252, 229);
+            pictureBox1.Location = new Point(266, 229);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(23, 23);
             pictureBox1.TabIndex = 2;
@@ -77,13 +79,14 @@
             // txtPassword
             // 
             txtPassword.Cursor = Cursors.IBeam;
-            txtPassword.Location = new Point(281, 271);
+            txtPassword.Location = new Point(295, 271);
             txtPassword.MaxLength = 20;
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Contraseña";
             txtPassword.Size = new Size(167, 23);
             txtPassword.TabIndex = 3;
             txtPassword.UseSystemPasswordChar = true;
+            txtPassword.Enter += txtUsuarioPassword_Enter;
             txtPassword.KeyPress += txt_KeyPress;
             txtPassword.KeyUp += txt_KeyUp;
             // 
@@ -91,7 +94,7 @@
             // 
             pictureBox2.BackgroundImage = Properties.Resources.password_3715;
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(252, 271);
+            pictureBox2.Location = new Point(266, 271);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(23, 23);
             pictureBox2.TabIndex = 4;
@@ -99,7 +102,7 @@
             // 
             // btnOK
             // 
-            btnOK.Location = new Point(252, 336);
+            btnOK.Location = new Point(266, 352);
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(196, 23);
             btnOK.TabIndex = 5;
@@ -110,7 +113,7 @@
             // chkShowPw
             // 
             chkShowPw.AutoSize = true;
-            chkShowPw.Location = new Point(454, 273);
+            chkShowPw.Location = new Point(468, 273);
             chkShowPw.Name = "chkShowPw";
             chkShowPw.Size = new Size(67, 19);
             chkShowPw.TabIndex = 6;
@@ -139,6 +142,16 @@
             lblError.TextAlign = ContentAlignment.MiddleCenter;
             lblError.Visible = false;
             // 
+            // lblIngresando
+            // 
+            lblIngresando.Font = new Font("Bahnschrift", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblIngresando.Location = new Point(12, 352);
+            lblIngresando.Name = "lblIngresando";
+            lblIngresando.Size = new Size(703, 23);
+            lblIngresando.TabIndex = 9;
+            lblIngresando.Text = "Ingresando...";
+            lblIngresando.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Login
             // 
             AcceptButton = btnOK;
@@ -154,6 +167,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(txtUsuario);
             Controls.Add(lblTitle);
+            Controls.Add(lblIngresando);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
             StartPosition = FormStartPosition.CenterParent;
@@ -178,5 +192,6 @@
         private CheckBox chkShowPw;
         private PictureBox pictureBox3;
         private Label lblError;
+        private Label lblIngresando;
     }
 }

@@ -11,11 +11,11 @@ public partial class Plan
 
     public int IdEspecialidad { get; set; }
 
-    public virtual ICollection<Comision> Comisiones { get; set; } = new List<Comision>();
+    public virtual ICollection<Comision>? Comisiones { get; set; } = null;
 
-    public virtual Especialidad IdEspecialidadNavigation { get; set; } = null!;
+    public virtual Especialidad? IdEspecialidadNavigation { get; set; } = null;
 
-    public virtual ICollection<Materia> Materia { get; set; } = new List<Materia>();
+    public virtual ICollection<Materia>? Materia { get; set; } = null;
 
-    public virtual ICollection<Persona> Personas { get; set; } = new List<Persona>();
+    public virtual ICollection<Persona>? Personas { get; set; } = null;
 }

@@ -31,6 +31,8 @@
             groupBox2 = new GroupBox();
             cmbPlan = new ComboBox();
             groupBox1 = new GroupBox();
+            lblFecha = new Label();
+            maskedTextBox1 = new MaskedTextBox();
             lblErrorEmail = new Label();
             label1 = new Label();
             label3 = new Label();
@@ -42,11 +44,11 @@
             txtApellido = new TextBox();
             txtEmail = new TextBox();
             label7 = new Label();
-            button2 = new Button();
-            button1 = new Button();
+            btnCancelar = new Button();
+            btnGuardar = new Button();
             groupBox3 = new GroupBox();
-            chkPass = new CheckBox();
             pictureBox1 = new PictureBox();
+            chkPass = new CheckBox();
             lblErrUser = new Label();
             txtContraseña = new TextBox();
             txtUsuario = new TextBox();
@@ -56,7 +58,7 @@
             cmbTipo = new ComboBox();
             lblId = new Label();
             txtId = new TextBox();
-            button3 = new Button();
+            btnReestablecer = new Button();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -73,7 +75,6 @@
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Plan de estudio";
-            groupBox2.Visible = false;
             // 
             // cmbPlan
             // 
@@ -87,6 +88,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(lblFecha);
+            groupBox1.Controls.Add(maskedTextBox1);
             groupBox1.Controls.Add(lblErrorEmail);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label3);
@@ -98,18 +101,40 @@
             groupBox1.Controls.Add(txtApellido);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(label7);
-            groupBox1.Location = new Point(25, 216);
+            groupBox1.Location = new Point(25, 185);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(313, 205);
+            groupBox1.Size = new Size(313, 236);
             groupBox1.TabIndex = 63;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos Personales";
+            // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(12, 154);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(63, 15);
+            lblFecha.TabIndex = 9;
+            lblFecha.Text = "Fecha nac.";
+            // 
+            // maskedTextBox1
+            // 
+            maskedTextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            maskedTextBox1.Location = new Point(96, 150);
+            maskedTextBox1.Mask = "00/00/0000";
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.PromptChar = '-';
+            maskedTextBox1.Size = new Size(70, 23);
+            maskedTextBox1.TabIndex = 8;
+            maskedTextBox1.TextAlign = HorizontalAlignment.Center;
+            maskedTextBox1.ValidatingType = typeof(DateTime);
+            maskedTextBox1.Leave += maskedTextBox1_Leave;
             // 
             // lblErrorEmail
             // 
             lblErrorEmail.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblErrorEmail.ForeColor = Color.IndianRed;
-            lblErrorEmail.Location = new Point(86, 176);
+            lblErrorEmail.Location = new Point(86, 205);
             lblErrorEmail.Name = "lblErrorEmail";
             lblErrorEmail.Size = new Size(205, 13);
             lblErrorEmail.TabIndex = 0;
@@ -172,7 +197,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 153);
+            label4.Location = new Point(12, 182);
             label4.Name = "label4";
             label4.Size = new Size(36, 15);
             label4.TabIndex = 0;
@@ -189,7 +214,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(96, 150);
+            txtEmail.Location = new Point(96, 179);
             txtEmail.MaxLength = 100;
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(183, 23);
@@ -205,30 +230,30 @@
             label7.TabIndex = 0;
             label7.Text = "Telefono";
             // 
-            // button2
+            // btnCancelar
             // 
-            button2.Location = new Point(554, 327);
-            button2.Name = "button2";
-            button2.Size = new Size(108, 35);
-            button2.TabIndex = 13;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnCancelar.Location = new Point(554, 327);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(108, 35);
+            btnCancelar.TabIndex = 13;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // button1
+            // btnGuardar
             // 
-            button1.Location = new Point(378, 328);
-            button1.Name = "button1";
-            button1.Size = new Size(111, 35);
-            button1.TabIndex = 12;
-            button1.Text = "Agregar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnGuardar.Location = new Point(378, 328);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(111, 35);
+            btnGuardar.TabIndex = 12;
+            btnGuardar.Text = "Agregar";
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(chkPass);
             groupBox3.Controls.Add(pictureBox1);
+            groupBox3.Controls.Add(chkPass);
             groupBox3.Controls.Add(lblErrUser);
             groupBox3.Controls.Add(txtContraseña);
             groupBox3.Controls.Add(txtUsuario);
@@ -236,31 +261,33 @@
             groupBox3.Controls.Add(label10);
             groupBox3.Location = new Point(25, 57);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(313, 130);
+            groupBox3.Size = new Size(313, 122);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Autenticación";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.mostrar_contrasena;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.InitialImage = Properties.Resources.mostrar_contrasena;
+            pictureBox1.Location = new Point(281, 98);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(20, 20);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // chkPass
             // 
             chkPass.AutoSize = true;
-            chkPass.Location = new Point(285, 89);
+            chkPass.Location = new Point(285, 83);
             chkPass.Name = "chkPass";
             chkPass.Size = new Size(15, 14);
             chkPass.TabIndex = 3;
             chkPass.TextAlign = ContentAlignment.MiddleCenter;
             chkPass.UseVisualStyleBackColor = true;
             chkPass.CheckedChanged += chkPass_CheckedChanged;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = Properties.Resources.mostrar_contrasena;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(281, 104);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(20, 20);
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
             // 
             // lblErrUser
             // 
@@ -276,7 +303,7 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(96, 84);
+            txtContraseña.Location = new Point(96, 78);
             txtContraseña.MaxLength = 20;
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PlaceholderText = "4-20 caracteres [a-Z] [0-9] y [-_.]";
@@ -292,11 +319,12 @@
             txtUsuario.PlaceholderText = "4-20 caracteres [a-Z] [0-9] y [-_.]";
             txtUsuario.Size = new Size(183, 23);
             txtUsuario.TabIndex = 1;
+            txtUsuario.Leave += txtUsuario_Leave;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(11, 87);
+            label11.Location = new Point(11, 81);
             label11.Name = "label11";
             label11.Size = new Size(67, 15);
             label11.TabIndex = 1;
@@ -350,31 +378,31 @@
             txtId.TabIndex = 0;
             txtId.Visible = false;
             // 
-            // button3
+            // btnReestablecer
             // 
-            button3.Location = new Point(515, 17);
-            button3.Name = "button3";
-            button3.Size = new Size(132, 31);
-            button3.TabIndex = 14;
-            button3.Text = "Reestablecer datos";
-            button3.UseVisualStyleBackColor = true;
-            button3.Visible = false;
-            button3.Click += button3_Click;
+            btnReestablecer.Location = new Point(515, 17);
+            btnReestablecer.Name = "btnReestablecer";
+            btnReestablecer.Size = new Size(132, 31);
+            btnReestablecer.TabIndex = 14;
+            btnReestablecer.Text = "Reestablecer datos";
+            btnReestablecer.UseVisualStyleBackColor = true;
+            btnReestablecer.Visible = false;
+            btnReestablecer.Click += btnReestablecer_Click;
             // 
             // AgregarEditarPersona
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(704, 443);
-            Controls.Add(button3);
+            Controls.Add(btnReestablecer);
             Controls.Add(lblId);
             Controls.Add(txtId);
             Controls.Add(groupBoxTipoUsuario);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnGuardar);
             Name = "AgregarEditarPersona";
             Text = "Agregar/editar persona";
             groupBox2.ResumeLayout(false);
@@ -408,8 +436,8 @@
         private TextBox txtApellido;
         private TextBox txtEmail;
         private Label label7;
-        private Button button2;
-        private Button button1;
+        private Button btnCancelar;
+        private Button btnGuardar;
         private GroupBox groupBox3;
         private TextBox txtContraseña;
         private TextBox txtUsuario;
@@ -418,11 +446,13 @@
         private GroupBox groupBoxTipoUsuario;
         private Label lblId;
         private TextBox txtId;
-        private Button button3;
+        private Button btnReestablecer;
         private Label lblErrUser;
         private Label lblErrorEmail;
         private ComboBox cmbTipo;
         private CheckBox chkPass;
         private PictureBox pictureBox1;
+        private Label lblFecha;
+        private MaskedTextBox maskedTextBox1;
     }
 }

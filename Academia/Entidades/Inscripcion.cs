@@ -19,7 +19,7 @@ public partial class Inscripcion
 
     public int? Nota { get; set; }
 
-    public virtual Curso Curso { get; set; } = null!;
+    public virtual Curso? Curso { get; set; } = null;
 
-    public virtual Persona IdAlumnoNavigation { get; set; } = null!;
+    public virtual Persona? IdAlumnoNavigation { get; set; } = null;
 }

@@ -40,9 +40,6 @@
     <Compile Update="FormularioPersona\AgregarEditarPersona.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormularioPersona\BusquedaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="FormularioPersona\FormPersona.cs">
       <SubType>Form</SubType>
     </Compile>

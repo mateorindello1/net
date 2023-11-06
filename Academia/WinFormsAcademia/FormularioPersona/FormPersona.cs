@@ -6,7 +6,7 @@ namespace WinFormsAcademia.FormularioPersona
 {
     public partial class FormPersona : Form
     {
-        int? rol;
+        int? rol = null;
         public FormPersona(int? tipo)
         {
             InitializeComponent();
@@ -17,12 +17,14 @@ namespace WinFormsAcademia.FormularioPersona
         {
             if (!string.IsNullOrEmpty(txtFilter.Text))
             {
-                dgvPersonas.DataSource = await PersonaServicios.GetOne(Int32.Parse(txtFilter.Text), rol);
+                List<Persona> list = new List<Persona>();
+                list.Add(await PersonaServicios.GetOne(Int32.Parse(txtFilter.Text), rol));
+                dgvPersonas.DataSource = list;
             }
             else dgvPersonas.DataSource = await PersonaServicios.Get(rol);
-            dgvPersonas.Columns["Dictados"].Visible = false;
-            dgvPersonas.Columns["IdPlanNavigation"].Visible = false;
-            dgvPersonas.Columns["Inscripciones"].Visible = false;
+            //dgvPersonas.Columns["Dictados"].Visible = false;
+            //dgvPersonas.Columns["IdPlanNavigation"].Visible = false;
+            //dgvPersonas.Columns["Inscripciones"].Visible = false;
             if (dgvPersonas.Rows.Count == 0)
             {
                 btEliminar.Enabled = false;
@@ -48,13 +50,12 @@ namespace WinFormsAcademia.FormularioPersona
             this.List();
         }
 
-        private void btEditar_Click(object sender, EventArgs e)
+        private async void btEditar_Click(object sender, EventArgs e)
         {
-            var editPersona = dgvPersonas.SelectedRows[0].DataBoundItem as Persona;
-            AgregarEditarPersona agregar = new AgregarEditarPersona(editPersona);
-            agregar.ShowDialog();
-            this.List();
-
+            var personaId = Int32.Parse(dgvPersonas.SelectedRows[0].Cells["Legajo"].Value.ToString());
+            var editPersona = await PersonaServicios.GetOne(personaId,null);
+            AgregarEditarPersona editar = new AgregarEditarPersona(editPersona);
+            editar.ShowDialog();
             this.List();
         }
 
@@ -62,7 +63,7 @@ namespace WinFormsAcademia.FormularioPersona
         {
             if (dgvPersonas.SelectedRows.Count > 0)
             {
-                int personaId = (int)dgvPersonas.SelectedRows[0].Cells[0].Value;
+                int personaId = Int32.Parse(dgvPersonas.SelectedRows[0].Cells["Legajo"].Value.ToString());
                 DialogResult result = MessageBox.Show("Seguro que quieres eliminar esta persona?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
@@ -109,10 +110,11 @@ namespace WinFormsAcademia.FormularioPersona
             {
                 txtFilter.Enabled = false;
                 txtFilter.Text = string.Empty;
+                this.List();
             }
         }
 
-        private async void txtFilter_Leave(object sender, EventArgs e)
+        private void txtFilter_Leave(object sender, EventArgs e)
         {
             this.List();
         }

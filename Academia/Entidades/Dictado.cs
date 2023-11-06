@@ -17,7 +17,7 @@ public partial class Dictado
 
     public string? Cargo { get; set; }
 
-    public virtual Curso Curso { get; set; } = null!;
+    public virtual Curso? Curso { get; set; } = null;
 
-    public virtual Persona IdDocenteNavigation { get; set; } = null!;
+    public virtual Persona? IdDocenteNavigation { get; set; } = null;
 }

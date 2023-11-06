@@ -9,5 +9,5 @@ public partial class Especialidad
 
     public string Descripcion { get; set; } = null!;
 
-    public virtual ICollection<Plan> Planes { get; set; } = new List<Plan>();
+    public virtual ICollection<Plan>? Planes { get; set; } = null;
 }

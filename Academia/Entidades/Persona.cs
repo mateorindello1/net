@@ -27,9 +27,9 @@ public partial class Persona
 
     public int TipoUsuario { get; set; }
 
-    public virtual ICollection<Dictado> Dictados { get; set; } = new List<Dictado>();
+    public virtual ICollection<Dictado>? Dictados { get; set; } = null;
 
-    public virtual Plan IdPlanNavigation { get; set; } = null!;
+    public virtual Plan? IdPlanNavigation { get; set; } = null;
 
-    public virtual ICollection<Inscripcion> Inscripciones { get; set; } = new List<Inscripcion>();
+    public virtual ICollection<Inscripcion>? Inscripciones { get; set; } = null;
 }

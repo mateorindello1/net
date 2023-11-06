@@ -17,7 +17,7 @@ public partial class Materia
 
     public int IdPlan { get; set; }
 
-    public virtual ICollection<Comision> Comisiones { get; set; } = new List<Comision>();
+    public virtual ICollection<Comision>? Comisiones { get; set; } = null;
 
-    public virtual Plan IdPlanNavigation { get; set; } = null!;
+    public virtual Plan? IdPlanNavigation { get; set; } = null;
 }

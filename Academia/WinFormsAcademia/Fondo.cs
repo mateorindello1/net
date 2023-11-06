@@ -21,7 +21,7 @@ namespace WinFormsAcademia
             IniciarAplicacion();
         }
 
-        private async void AbrirNuevoForm(Form formulario)
+        private void AbrirNuevoForm(Form formulario)
         {
             formulario.StartPosition = FormStartPosition.Manual;
             formulario.Location = new Point(

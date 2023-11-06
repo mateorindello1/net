@@ -14,6 +14,8 @@ namespace WinFormsAcademia
         private async void btnOK_Click(object sender, EventArgs e)
         {
             btnOK.Enabled = false;
+            btnOK.Visible = false;
+            lblIngresando.Visible = true;
             if (await login())
             {
                 tipoIngreso = Persona.TipoUsuario;
@@ -23,7 +25,9 @@ namespace WinFormsAcademia
             else
             {
                 lblError.Visible = true;
+                lblIngresando.Visible = false;
                 btnOK.Enabled = true;
+                btnOK.Visible = true;
             }
         }
 
@@ -102,6 +106,11 @@ namespace WinFormsAcademia
                 }
             }
             else Application.Exit();
+        }
+
+        private void txtUsuarioPassword_Enter(object sender, EventArgs e)
+        {
+            lblError.Visible = false;
         }
     }
 }

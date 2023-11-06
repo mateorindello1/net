@@ -17,9 +17,9 @@ public partial class Comision
 
     public int AnioEspecialidad { get; set; }
 
-    public virtual ICollection<Curso> Cursos { get; set; } = new List<Curso>();
+    public virtual ICollection<Curso>? Cursos { get; set; } = null;
 
-    public virtual Materia IdMateriaNavigation { get; set; } = null!;
+    public virtual Materia? IdMateriaNavigation { get; set; } = null;
 
-    public virtual Plan IdPlanNavigation { get; set; } = null!;
+    public virtual Plan? IdPlanNavigation { get; set; } = null;
 }
