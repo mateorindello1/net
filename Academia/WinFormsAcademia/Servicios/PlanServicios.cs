@@ -20,9 +20,11 @@ namespace WinFormsAcademia.Servicios
             }
             else return null;
         }
-        public static async Task<List<Plan>> Get()
+        public static async Task<List<Plan>> Get(int? idEspecialidad=null)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}");
+            string requestUri = baseUrl;
+            if (idEspecialidad is not null) requestUri += $"?idEspecialidad={idEspecialidad}";
+            var response = await httpClient.GetAsync($"{requestUri}");
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -56,6 +58,14 @@ namespace WinFormsAcademia.Servicios
         {
             var response = await httpClient.DeleteAsync($"{baseUrl}/idPlan={idPlan}");
             return response.IsSuccessStatusCode;
+        }
+
+        public static bool DescripcionDisponible(string descripcion)
+        {
+            var descripcionJson = JsonConvert.SerializeObject(descripcion);
+            var content = new StringContent(descripcionJson, Encoding.UTF8, "application/json");
+            var response = httpClient.PostAsync($"{baseUrl}/descripciondisponible", content).Result;
+            return (response.IsSuccessStatusCode);
         }
     }
 }

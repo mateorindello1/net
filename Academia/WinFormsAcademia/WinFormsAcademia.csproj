@@ -16,4 +16,13 @@
     <ProjectReference Include="..\Entidades\Entidades.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="FormularioPlan\AgregarEditarPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormularioPlan\FormPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

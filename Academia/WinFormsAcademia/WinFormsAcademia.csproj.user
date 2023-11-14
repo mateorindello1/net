@@ -43,18 +43,6 @@
     <Compile Update="FormularioPersona\FormPersona.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormularioPlan\AgregarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormularioPlan\BusquedaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormularioPlan\EditarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormularioPlan\FormPlan.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>

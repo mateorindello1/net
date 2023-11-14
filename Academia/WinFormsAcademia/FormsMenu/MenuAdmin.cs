@@ -19,6 +19,11 @@ namespace WinFormsAcademia
         {
             this.Hide();
             FormPlan planesCrud = new FormPlan();
+            planesCrud.StartPosition = FormStartPosition.Manual;
+            planesCrud.Location = new Point(
+                MdiParent.Location.X + (MdiParent.Width - planesCrud.Width) / 2,
+                MdiParent.Location.Y + (MdiParent.Height - planesCrud.Height) / 2
+            );
             planesCrud.ShowDialog();
             this.Show();
         }

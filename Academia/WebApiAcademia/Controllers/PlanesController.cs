@@ -33,7 +33,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Planes/5
-        [HttpGet("idPlan={id}")]
+        [HttpGet("idPlan={idPlan}")]
         public async Task<ActionResult<Plan>> GetPlan(int idPlan)
         {
           if (_context.Planes == null)
@@ -51,7 +51,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // PUT: api/Planes/5
-        [HttpPut("idPlan={id}")]
+        [HttpPut("idPlan={idPlan}")]
         public async Task<IActionResult> PutPlan(int idPlan, Plan plan)
         {
             if (idPlan != plan.IdPlan)
@@ -117,6 +117,17 @@ namespace WebApiAcademia.Controllers
         private bool PlanExists(int idPlan)
         {
             return (_context.Planes?.Any(e => e.IdPlan == idPlan)).GetValueOrDefault();
+        }
+
+        [HttpPost("descripciondisponible")]
+        public async Task<IActionResult> ValidarDescripcionDisponible([FromBody] string descripcion)
+        {
+            var plan = await _context.Planes.SingleOrDefaultAsync(x => x.Descripcion == descripcion);
+            if (plan is null)
+            {
+                return Ok(true);
+            }
+            else return Conflict("La descripción no está disponible.");
         }
     }
 }
