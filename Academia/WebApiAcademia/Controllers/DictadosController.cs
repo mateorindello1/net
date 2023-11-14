@@ -33,7 +33,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Dictados/5
-        [HttpGet("{idComision}/{idPlan}/{idMateria}/{anio}/{idDocente}")]
+        [HttpGet("idComision={idComision}&idPlan{idPlan}&idMateria={idMateria}&anio={anio}&idDocente={idDocente}")]
         public async Task<ActionResult<Dictado>> GetDictado(int idComision, int idPlan, int idMateria, int anio, int idDocente)
         {
             if (_context.Dictados == null)
@@ -56,7 +56,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // PUT: api/Dictados/5
-        [HttpPut("{idComision}/{idPlan}/{idMateria}/{anio}/{idDocente}")]
+        [HttpPut("idComision={idComision}&idPlan{idPlan}&idMateria={idMateria}&anio={anio}&idDocente={idDocente}")]
         public async Task<IActionResult> PutDictado(int idComision, int idPlan, int idMateria, int anio, int idDocente, Dictado dictado)
         {
             if (idComision != dictado.IdComision || 
@@ -118,7 +118,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // DELETE: api/Dictados/5
-        [HttpDelete("{idComision}/{idPlan}/{idMateria}/{anio}/{idDocente}")]
+        [HttpDelete("idComision={idComision}&idPlan{idPlan}&idMateria={idMateria}&anio={anio}&idDocente={idDocente}")]
         public async Task<IActionResult> DeleteDictado(int idComision, int idPlan, int idMateria, int anio, int idDocente)
         {
             if (_context.Dictados == null)

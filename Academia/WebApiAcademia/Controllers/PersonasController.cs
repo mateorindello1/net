@@ -48,7 +48,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Personas/5
-        [HttpGet("{legajo}")]
+        [HttpGet("legajo={legajo}")]
         public async Task<ActionResult<Persona>> GetPersona(int legajo, int? rol)
         {
           if (_context.Personas == null)
@@ -75,7 +75,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // PUT: api/Personas/5
-        [HttpPut("{legajo}")]
+        [HttpPut("legajo={legajo}")]
         public async Task<IActionResult> PutPersona(int legajo, Persona persona)
         {
             //_context.Entry(persona).Reference(p => p.IdPlanNavigation).Load();
@@ -123,7 +123,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // DELETE: api/Personas/5
-        [HttpDelete("{legajo}")]
+        [HttpDelete("legajo={legajo}")]
         public async Task<IActionResult> DeletePersona(int legajo)
         {
             if (_context.Personas == null)

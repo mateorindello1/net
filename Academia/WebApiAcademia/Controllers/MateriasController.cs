@@ -33,14 +33,14 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Materias/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Materia>> GetMateria(int id)
+        [HttpGet("idMateria={idMateria}")]
+        public async Task<ActionResult<Materia>> GetMateria(int idMateria)
         {
           if (_context.Materias == null)
           {
               return NotFound();
           }
-            var materia = await _context.Materias.FindAsync(id);
+            var materia = await _context.Materias.FindAsync(idMateria);
 
             if (materia == null)
             {
@@ -51,10 +51,10 @@ namespace WebApiAcademia.Controllers
         }
 
         // PUT: api/Materias/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMateria(int id, Materia materia)
+        [HttpPut("idMateria={idMateria}")]
+        public async Task<IActionResult> PutMateria(int idMateria, Materia materia)
         {
-            if (id != materia.IdMateria)
+            if (idMateria != materia.IdMateria)
             {
                 return BadRequest();
             }
@@ -67,7 +67,7 @@ namespace WebApiAcademia.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MateriaExists(id))
+                if (!MateriaExists(idMateria))
                 {
                     return NotFound();
                 }
@@ -91,18 +91,18 @@ namespace WebApiAcademia.Controllers
             _context.Materias.Add(materia);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMateria", new { id = materia.IdMateria }, materia);
+            return CreatedAtAction("GetMateria", new { idMateria = materia.IdMateria }, materia);
         }
 
         // DELETE: api/Materias/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMateria(int id)
+        [HttpDelete("idMateria={idMateria}")]
+        public async Task<IActionResult> DeleteMateria(int idMateria)
         {
             if (_context.Materias == null)
             {
                 return NotFound();
             }
-            var materia = await _context.Materias.FindAsync(id);
+            var materia = await _context.Materias.FindAsync(idMateria);
             if (materia == null)
             {
                 return NotFound();
@@ -114,9 +114,9 @@ namespace WebApiAcademia.Controllers
             return NoContent();
         }
 
-        private bool MateriaExists(int id)
+        private bool MateriaExists(int idMateria)
         {
-            return (_context.Materias?.Any(e => e.IdMateria == id)).GetValueOrDefault();
+            return (_context.Materias?.Any(e => e.IdMateria == idMateria)).GetValueOrDefault();
         }
     }
 }

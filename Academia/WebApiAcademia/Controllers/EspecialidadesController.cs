@@ -33,14 +33,14 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Especialidades/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Especialidad>> GetEspecialidad(int id)
+        [HttpGet("idEspecialidad={idEspecialidad}")]
+        public async Task<ActionResult<Especialidad>> GetEspecialidad(int idEspecialidad)
         {
           if (_context.Especialidades == null)
           {
               return NotFound();
           }
-            var especialidad = await _context.Especialidades.FindAsync(id);
+            var especialidad = await _context.Especialidades.FindAsync(idEspecialidad);
 
             if (especialidad == null)
             {
@@ -51,10 +51,10 @@ namespace WebApiAcademia.Controllers
         }
 
         // PUT: api/Especialidades/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEspecialidad(int id, Especialidad especialidad)
+        [HttpPut("idEspecialidad={idEspecialidad}")]
+        public async Task<IActionResult> PutEspecialidad(int idEspecialidad, Especialidad especialidad)
         {
-            if (id != especialidad.IdEspecialidad)
+            if (idEspecialidad != especialidad.IdEspecialidad)
             {
                 return BadRequest();
             }
@@ -67,7 +67,7 @@ namespace WebApiAcademia.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EspecialidadExists(id))
+                if (!EspecialidadExists(idEspecialidad))
                 {
                     return NotFound();
                 }
@@ -91,18 +91,18 @@ namespace WebApiAcademia.Controllers
             _context.Especialidades.Add(especialidad);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEspecialidad", new { id = especialidad.IdEspecialidad }, especialidad);
+            return CreatedAtAction("GetEspecialidad", new { idEspecialidad = especialidad.IdEspecialidad }, especialidad);
         }
 
         // DELETE: api/Especialidades/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEspecialidad(int id)
+        [HttpDelete("idEspecialidad={idEspecialidad}")]
+        public async Task<IActionResult> DeleteEspecialidad(int idEspecialidad)
         {
             if (_context.Especialidades == null)
             {
                 return NotFound();
             }
-            var especialidad = await _context.Especialidades.FindAsync(id);
+            var especialidad = await _context.Especialidades.FindAsync(idEspecialidad);
             if (especialidad == null)
             {
                 return NotFound();
@@ -114,9 +114,9 @@ namespace WebApiAcademia.Controllers
             return NoContent();
         }
 
-        private bool EspecialidadExists(int id)
+        private bool EspecialidadExists(int idEspecialidad)
         {
-            return (_context.Especialidades?.Any(e => e.IdEspecialidad == id)).GetValueOrDefault();
+            return (_context.Especialidades?.Any(e => e.IdEspecialidad == idEspecialidad)).GetValueOrDefault();
         }
     }
 }

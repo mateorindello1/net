@@ -9,9 +9,9 @@ namespace WinFormsAcademia.Servicios
     {
         private static readonly string baseUrl = "https://localhost:7035/api/Especialidades";
         private static HttpClient httpClient = new HttpClient();
-        public static async Task<Especialidad> GetOne(int id)
+        public static async Task<Especialidad> GetOne(int idEspecialidad)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}/{id}");
+            var response = await httpClient.GetAsync($"{baseUrl}/idEspecialidad={idEspecialidad}");
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -49,12 +49,12 @@ namespace WinFormsAcademia.Servicios
         {
             var especialidadJson = JsonConvert.SerializeObject(especialidad);
             var content = new StringContent(especialidadJson, Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync($"{baseUrl}/{especialidad.IdEspecialidad}", content);
+            var response = await httpClient.PutAsync($"{baseUrl}/idEspecialidad={especialidad.IdEspecialidad}", content);
             return response.IsSuccessStatusCode;
         }
-        public static async Task<Boolean> Delete(int id)
+        public static async Task<Boolean> Delete(int idEspecialidad)
         {
-            var response = await httpClient.DeleteAsync($"{baseUrl}/{id}");
+            var response = await httpClient.DeleteAsync($"{baseUrl}/idEspecialidad={idEspecialidad}");
             return response.IsSuccessStatusCode;
         }
     }

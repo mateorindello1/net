@@ -33,7 +33,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Inscripciones/1/2/3/2023/4
-        [HttpGet("{idAlumno}/{idComision}/{idPlan}/{idMateria}/{anio}")]
+        [HttpGet("idAlumno={idAlumno}&idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}")]
         public async Task<ActionResult<Inscripcion>> GetInscripcion(int idAlumno, int idComision, int idPlan, int idMateria, int anio)
         {
             if (_context.Inscripciones == null)
@@ -53,7 +53,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // PUT: api/Inscripciones/1/2/3/2023/4
-        [HttpPut("{idAlumno}/{idComision}/{idPlan}/{idMateria}/{anio}")]
+        [HttpPut("idAlumno={idAlumno}&idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}")]
         public async Task<IActionResult> PutInscripcion(int idAlumno, int idComision, int idPlan, int idMateria, int anio, Inscripcion inscripcion)
         {
             if (idAlumno != inscripcion.IdAlumno || 
@@ -115,7 +115,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // DELETE: api/Inscripciones/1/2/3/2023/4
-        [HttpDelete("{idAlumno}/{idComision}/{idPlan}/{idMateria}/{anio}")]
+        [HttpDelete("idAlumno={idAlumno}&idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}")]
         public async Task<IActionResult> DeleteInscripcion(int idAlumno, int idComision, int idPlan, int idMateria, int anio)
         {
             if (_context.Inscripciones == null)

@@ -33,7 +33,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Comisiones/5
-        [HttpGet("{idComision}/{idPlan}/{idMateria}")]
+        [HttpGet("idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}")]
         public async Task<ActionResult<Comision>> GetComision(int idComision,int idPlan, int idMateria)
         {
           if (_context.Comisiones == null)
@@ -53,7 +53,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // PUT: api/Comisiones/5
-        [HttpPut("{idComision}/{idPlan}/{idMateria}")]
+        [HttpPut("idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}")]
         public async Task<IActionResult> PutComision(int idComision, int idPlan, int idMateria, Comision comision)
         {
             if (idComision != comision.IdComision || idPlan != comision.IdPlan || idMateria != comision.IdMateria)
@@ -111,7 +111,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // DELETE: api/Comisiones/5
-        [HttpDelete("{idComision}/{idPlan}/{idMateria}")]
+        [HttpDelete("idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}")]
         public async Task<IActionResult> DeleteComision(int idComision, int idPlan, int idMateria)
         {
             if (_context.Comisiones == null)

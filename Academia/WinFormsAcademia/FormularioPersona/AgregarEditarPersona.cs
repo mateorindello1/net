@@ -177,7 +177,7 @@ namespace WinFormsAcademia.FormularioPersona
 
         private bool ValidarUsuario(string text)
         {
-            if (txtUsuario.Text.Length <5) return false;
+            if (txtUsuario.Text.Length < 5) return false;
             if (editMode && personaAEditar.NombreUsuario == txtUsuario.Text)
             {
                 return true;

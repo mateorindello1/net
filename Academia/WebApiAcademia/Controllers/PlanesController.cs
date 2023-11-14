@@ -33,14 +33,14 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Planes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Plan>> GetPlan(int id)
+        [HttpGet("idPlan={id}")]
+        public async Task<ActionResult<Plan>> GetPlan(int idPlan)
         {
           if (_context.Planes == null)
           {
               return NotFound();
           }
-            var plan = await _context.Planes.FindAsync(id);
+            var plan = await _context.Planes.FindAsync(idPlan);
 
             if (plan == null)
             {
@@ -51,10 +51,10 @@ namespace WebApiAcademia.Controllers
         }
 
         // PUT: api/Planes/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlan(int id, Plan plan)
+        [HttpPut("idPlan={id}")]
+        public async Task<IActionResult> PutPlan(int idPlan, Plan plan)
         {
-            if (id != plan.IdPlan)
+            if (idPlan != plan.IdPlan)
             {
                 return BadRequest();
             }
@@ -67,7 +67,7 @@ namespace WebApiAcademia.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PlanExists(id))
+                if (!PlanExists(idPlan))
                 {
                     return NotFound();
                 }
@@ -91,18 +91,18 @@ namespace WebApiAcademia.Controllers
             _context.Planes.Add(plan);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPlan", new { id = plan.IdPlan }, plan);
+            return CreatedAtAction("GetPlan", new { idPlan = plan.IdPlan }, plan);
         }
 
         // DELETE: api/Planes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePlan(int id)
+        [HttpDelete("idPlan={idPlan}")]
+        public async Task<IActionResult> DeletePlan(int idPlan)
         {
             if (_context.Planes == null)
             {
                 return NotFound();
             }
-            var plan = await _context.Planes.FindAsync(id);
+            var plan = await _context.Planes.FindAsync(idPlan);
             if (plan == null)
             {
                 return NotFound();
@@ -114,9 +114,9 @@ namespace WebApiAcademia.Controllers
             return NoContent();
         }
 
-        private bool PlanExists(int id)
+        private bool PlanExists(int idPlan)
         {
-            return (_context.Planes?.Any(e => e.IdPlan == id)).GetValueOrDefault();
+            return (_context.Planes?.Any(e => e.IdPlan == idPlan)).GetValueOrDefault();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace WinFormsAcademia.Servicios
         private static HttpClient httpClient = new HttpClient();
         public static async Task<Inscripcion> GetOne(int idAlumno, int idComision, int idPlan, int idMateria, int anio)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}/{idAlumno}/{idComision}/{idPlan}/{idMateria}/{anio}");
+            var response = await httpClient.GetAsync($"{baseUrl}/idAlumno={idAlumno}&idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}");
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -49,12 +49,12 @@ namespace WinFormsAcademia.Servicios
         {
             var inscripcionJson = JsonConvert.SerializeObject(inscripcion);
             var content = new StringContent(inscripcionJson, Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync($"{baseUrl}/{inscripcion.IdAlumno}/{inscripcion.IdComision}/{inscripcion.IdPlan}/{inscripcion.IdMateria}/{inscripcion.Anio}", content);
+            var response = await httpClient.PutAsync($"{baseUrl}/idAlumno={inscripcion.IdAlumno}&idComision={inscripcion.IdComision}&idPlan={inscripcion.IdPlan}&idMateria={inscripcion.IdMateria}&anio={inscripcion.Anio}", content);
             return response.IsSuccessStatusCode;
         }
         public static async Task<Boolean> Delete(int idAlumno, int idComision, int idPlan, int idMateria, int anio)
         {
-            var response = await httpClient.DeleteAsync($"{baseUrl}/{idAlumno}/{idComision}/{idPlan}/{idMateria}/{anio}");
+            var response = await httpClient.DeleteAsync($"{baseUrl}/idAlumno={idAlumno}&idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}");
             return response.IsSuccessStatusCode;
         }
     }

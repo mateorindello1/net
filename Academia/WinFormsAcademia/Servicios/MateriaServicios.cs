@@ -9,9 +9,9 @@ namespace WinFormsAcademia.Servicios
     {
         private static readonly string baseUrl = "https://localhost:7035/api/Materias";
         private static HttpClient httpClient = new HttpClient();
-        public static async Task<Materia> GetOne(int id)
+        public static async Task<Materia> GetOne(int idMateria)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}/{id}");
+            var response = await httpClient.GetAsync($"{baseUrl}/idMateria={idMateria}");
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -49,12 +49,12 @@ namespace WinFormsAcademia.Servicios
         {
             var materiaJson = JsonConvert.SerializeObject(materia);
             var content = new StringContent(materiaJson, Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync($"{baseUrl}/{materia.IdMateria}", content);
+            var response = await httpClient.PutAsync($"{baseUrl}/idMateria={materia.IdMateria}", content);
             return response.IsSuccessStatusCode;
         }
-        public static async Task<Boolean> Delete(int id)
+        public static async Task<Boolean> Delete(int idMateria)
         {
-            var response = await httpClient.DeleteAsync($"{baseUrl}/{id}");
+            var response = await httpClient.DeleteAsync($"{baseUrl}/idMateria={idMateria}");
             return response.IsSuccessStatusCode;
         }
     }

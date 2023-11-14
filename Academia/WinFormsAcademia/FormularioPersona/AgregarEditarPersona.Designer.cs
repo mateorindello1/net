@@ -270,7 +270,6 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.mostrar_contrasena;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.InitialImage = Properties.Resources.mostrar_contrasena;
             pictureBox1.Location = new Point(281, 98);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(20, 20);
@@ -351,6 +350,7 @@
             // 
             // cmbTipo
             // 
+            cmbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipo.FormattingEnabled = true;
             cmbTipo.Items.AddRange(new object[] { "Alumno", "Docente", "Administrador" });
             cmbTipo.Location = new Point(36, 34);

@@ -11,7 +11,7 @@ namespace WinFormsAcademia.Servicios
         private static HttpClient httpClient = new HttpClient();
         public static async Task<Dictado> GetOne(int idComision, int idPlan, int idMateria, int anio, int idDocente)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}/{idComision}/{idPlan}/{idMateria}/{anio}/{idDocente}");
+            var response = await httpClient.GetAsync($"{baseUrl}/idComision={idComision}&idPlan{idPlan}&idMateria={idMateria}&anio={anio}&idDocente={idDocente}");
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -49,12 +49,12 @@ namespace WinFormsAcademia.Servicios
         {
             var dictadoJson = JsonConvert.SerializeObject(dictado);
             var content = new StringContent(dictadoJson, Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync($"{baseUrl}/{dictado.IdComision}/{dictado.IdPlan}/{dictado.IdMateria}/{dictado.Anio}/{dictado.IdDocente}", content);
+            var response = await httpClient.PutAsync($"{baseUrl}/idComision={dictado.IdComision}&idPlan={dictado.IdPlan}&idMateria={dictado.IdMateria}&anio={dictado.Anio}&idDocente={dictado.IdDocente}", content);
             return response.IsSuccessStatusCode;
         }
         public static async Task<Boolean> Delete(int idComision, int idPlan, int idMateria, int anio, int idDocente)
         {
-            var response = await httpClient.DeleteAsync($"{baseUrl}/{idComision}/{idPlan}/{idMateria}/{anio}/{idDocente}");
+            var response = await httpClient.DeleteAsync($"{baseUrl}/idComision={idComision}&idPlan{idPlan}&idMateria={idMateria}&anio={anio}&idDocente={idDocente}");
             return response.IsSuccessStatusCode;
         }
     }

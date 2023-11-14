@@ -9,9 +9,9 @@ namespace WinFormsAcademia.Servicios
     {
         private static readonly string baseUrl = "https://localhost:7035/api/Planes";
         private static HttpClient httpClient = new HttpClient();
-        public static async Task<Plan> GetOne(int id)
+        public static async Task<Plan> GetOne(int idPlan)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}/{id}");
+            var response = await httpClient.GetAsync($"{baseUrl}/idPlan={idPlan}");
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -49,12 +49,12 @@ namespace WinFormsAcademia.Servicios
         {
             var planJson = JsonConvert.SerializeObject(plan);
             var content = new StringContent(planJson, Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync($"{baseUrl}/{plan.IdPlan}", content);
+            var response = await httpClient.PutAsync($"{baseUrl}/idPlan={plan.IdPlan}", content);
             return response.IsSuccessStatusCode;
         }
-        public static async Task<Boolean> Delete(int id)
+        public static async Task<Boolean> Delete(int idPlan)
         {
-            var response = await httpClient.DeleteAsync($"{baseUrl}/{id}");
+            var response = await httpClient.DeleteAsync($"{baseUrl}/idPlan={idPlan}");
             return response.IsSuccessStatusCode;
         }
     }

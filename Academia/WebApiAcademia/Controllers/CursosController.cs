@@ -33,7 +33,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Cursos/5
-        [HttpGet("{idComision}/{idPlan}/{idMateria}/{anio}")]
+        [HttpGet("idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}")]
         public async Task<ActionResult<Curso>> GetCurso(int idComision, int idPlan, int idMateria, int anio)
         {
           if (_context.Cursos == null)
@@ -53,7 +53,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // PUT: api/Cursos/5
-        [HttpPut("{idComision}/{idPlan}/{idMateria}/{anio}")]
+        [HttpPut("idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}")]
         public async Task<IActionResult> PutCurso(int idComision, int idPlan, int idMateria, int anio, Curso curso)
         {
             if (idComision != curso.IdComision || idPlan != curso.IdPlan || idMateria != curso.IdMateria || anio != curso.Anio)
@@ -111,7 +111,7 @@ namespace WebApiAcademia.Controllers
         }
 
         // DELETE: api/Cursos/5
-        [HttpDelete("{idComision}/{idPlan}/{idMateria}/{anio}")]
+        [HttpDelete("idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}")]
         public async Task<IActionResult> DeleteCurso(int idComision, int idPlan, int idMateria, int anio)
         {
             if (_context.Cursos == null)

@@ -10,7 +10,7 @@ namespace WinFormsAcademia.Servicios
         private static HttpClient httpClient = new HttpClient();
         public static async Task<Persona> GetOne(int id, int? rol)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}/{id}");
+            var response = await httpClient.GetAsync($"{baseUrl}/legajo={id}");
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -50,12 +50,12 @@ namespace WinFormsAcademia.Servicios
         {
             var personaJson = JsonConvert.SerializeObject(persona);
             var content = new StringContent(personaJson, Encoding.UTF8, "application/json");
-            var response = await httpClient.PutAsync($"{baseUrl}/{persona.Legajo}", content);
+            var response = await httpClient.PutAsync($"{baseUrl}/legajo={persona.Legajo}", content);
             return response.IsSuccessStatusCode;
         }
         public static async Task<Boolean> Delete(int legajo)
         {
-            var response = await httpClient.DeleteAsync($"{baseUrl}/{legajo}");
+            var response = await httpClient.DeleteAsync($"{baseUrl}/legajo={legajo}");
             return response.IsSuccessStatusCode;
         }
 
