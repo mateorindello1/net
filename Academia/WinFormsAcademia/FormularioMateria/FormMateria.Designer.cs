@@ -29,140 +29,143 @@
         private void InitializeComponent()
         {
             button2 = new Button();
-            button1 = new Button();
             label1 = new Label();
             btEliminar = new Button();
             btEditar = new Button();
             btAgregar = new Button();
-            btConsultar = new Button();
-            dgvPersonas = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgvPersonas).BeginInit();
+            dgvMaterias = new DataGridView();
+            lblFilter = new Label();
+            cmbPlan = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)dgvMaterias).BeginInit();
             SuspendLayout();
             // 
             // button2
             // 
-            button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(496, 56);
+            button2.DialogResult = DialogResult.Retry;
+            button2.Font = new Font("Bahnschrift", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(673, 27);
             button2.Name = "button2";
             button2.Size = new Size(85, 39);
-            button2.TabIndex = 23;
-            button2.Text = "WinFormsAcademia";
+            button2.TabIndex = 15;
+            button2.Text = "Volver";
             button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Arial Narrow", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(275, 28);
-            button1.Name = "button1";
-            button1.Size = new Size(60, 67);
-            button1.TabIndex = 22;
-            button1.Text = "⭮";
-            button1.TextAlign = ContentAlignment.TopLeft;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button2.Click += button2_Click;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Berlin Sans FB", 39.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(51, 30);
+            label1.Font = new Font("Bahnschrift", 35.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(51, 9);
             label1.Name = "label1";
-            label1.Size = new Size(213, 58);
-            label1.TabIndex = 21;
+            label1.Size = new Size(530, 78);
+            label1.TabIndex = 13;
             label1.Text = "Materias";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btEliminar
             // 
             btEliminar.BackColor = Color.IndianRed;
-            btEliminar.Font = new Font("Berlin Sans FB Demi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btEliminar.Font = new Font("Bahnschrift SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btEliminar.ForeColor = SystemColors.ButtonFace;
-            btEliminar.Location = new Point(616, 363);
+            btEliminar.Location = new Point(627, 362);
             btEliminar.Name = "btEliminar";
-            btEliminar.Size = new Size(134, 60);
-            btEliminar.TabIndex = 20;
+            btEliminar.Size = new Size(134, 45);
+            btEliminar.TabIndex = 12;
             btEliminar.Text = "Eliminar";
             btEliminar.UseVisualStyleBackColor = false;
+            btEliminar.Click += btEliminar_Click;
             // 
             // btEditar
             // 
             btEditar.BackColor = Color.Orange;
-            btEditar.Font = new Font("Berlin Sans FB Demi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btEditar.Font = new Font("Bahnschrift SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btEditar.ForeColor = SystemColors.ButtonFace;
-            btEditar.Location = new Point(616, 279);
+            btEditar.Location = new Point(627, 279);
             btEditar.Name = "btEditar";
-            btEditar.Size = new Size(134, 60);
-            btEditar.TabIndex = 19;
+            btEditar.Size = new Size(134, 45);
+            btEditar.TabIndex = 11;
             btEditar.Text = "Editar";
             btEditar.UseVisualStyleBackColor = false;
+            btEditar.Click += btEditar_Click;
             // 
             // btAgregar
             // 
             btAgregar.BackColor = Color.YellowGreen;
-            btAgregar.Font = new Font("Berlin Sans FB Demi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btAgregar.Font = new Font("Bahnschrift", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btAgregar.ForeColor = SystemColors.ButtonFace;
-            btAgregar.Location = new Point(616, 197);
+            btAgregar.Location = new Point(627, 196);
             btAgregar.Name = "btAgregar";
-            btAgregar.Size = new Size(134, 60);
-            btAgregar.TabIndex = 18;
+            btAgregar.Size = new Size(134, 45);
+            btAgregar.TabIndex = 10;
             btAgregar.Text = "Agregar";
             btAgregar.UseVisualStyleBackColor = false;
+            btAgregar.Click += btAgregar_Click;
             // 
-            // btConsultar
+            // dgvMaterias
             // 
-            btConsultar.BackColor = Color.DodgerBlue;
-            btConsultar.Font = new Font("Berlin Sans FB Demi", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btConsultar.ForeColor = SystemColors.ButtonFace;
-            btConsultar.Location = new Point(616, 115);
-            btConsultar.Name = "btConsultar";
-            btConsultar.Size = new Size(134, 60);
-            btConsultar.TabIndex = 17;
-            btConsultar.Text = "Consultar";
-            btConsultar.UseVisualStyleBackColor = false;
+            dgvMaterias.AllowUserToAddRows = false;
+            dgvMaterias.AllowUserToDeleteRows = false;
+            dgvMaterias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMaterias.Location = new Point(51, 109);
+            dgvMaterias.MultiSelect = false;
+            dgvMaterias.Name = "dgvMaterias";
+            dgvMaterias.ReadOnly = true;
+            dgvMaterias.RowTemplate.Height = 25;
+            dgvMaterias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMaterias.Size = new Size(530, 308);
+            dgvMaterias.TabIndex = 8;
             // 
-            // dgvPersonas
+            // lblFilter
             // 
-            dgvPersonas.AllowUserToAddRows = false;
-            dgvPersonas.AllowUserToDeleteRows = false;
-            dgvPersonas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPersonas.Location = new Point(51, 115);
-            dgvPersonas.MultiSelect = false;
-            dgvPersonas.Name = "dgvPersonas";
-            dgvPersonas.ReadOnly = true;
-            dgvPersonas.RowTemplate.Height = 25;
-            dgvPersonas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPersonas.Size = new Size(530, 308);
-            dgvPersonas.TabIndex = 16;
+            lblFilter.Location = new Point(627, 109);
+            lblFilter.Name = "lblFilter";
+            lblFilter.Size = new Size(134, 23);
+            lblFilter.TabIndex = 21;
+            lblFilter.Text = "Filtrar por plan:";
+            lblFilter.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // cmbPlan
+            // 
+            cmbPlan.FormattingEnabled = true;
+            cmbPlan.Location = new Point(628, 133);
+            cmbPlan.Name = "cmbPlan";
+            cmbPlan.Size = new Size(134, 23);
+            cmbPlan.TabIndex = 22;
+            cmbPlan.SelectedIndexChanged += cmbPlan_SelectedIndexChanged;
             // 
             // FormMateria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = button2;
             ClientSize = new Size(800, 450);
+            Controls.Add(cmbPlan);
+            Controls.Add(lblFilter);
             Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(btEliminar);
             Controls.Add(btEditar);
             Controls.Add(btAgregar);
-            Controls.Add(btConsultar);
-            Controls.Add(dgvPersonas);
+            Controls.Add(dgvMaterias);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "FormMateria";
-            Text = "Administración de materias";
-            Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvPersonas).EndInit();
+            ShowInTaskbar = false;
+            Text = "Usuarios";
+            Load += FormMateria_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvMaterias).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button button2;
-        private Button button1;
         private Label label1;
         private Button btEliminar;
         private Button btEditar;
         private Button btAgregar;
-        private Button btConsultar;
-        private DataGridView dgvPersonas;
+        private DataGridView dgvMaterias;
+        private Label lblFilter;
+        private ComboBox cmbPlan;
     }
 }

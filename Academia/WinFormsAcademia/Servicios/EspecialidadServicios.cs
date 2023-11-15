@@ -57,5 +57,13 @@ namespace WinFormsAcademia.Servicios
             var response = await httpClient.DeleteAsync($"{baseUrl}/idEspecialidad={idEspecialidad}");
             return response.IsSuccessStatusCode;
         }
+
+        public static bool DescripcionDisponible(string descripcion)
+        {
+            var descripcionJson = JsonConvert.SerializeObject(descripcion);
+            var content = new StringContent(descripcionJson, Encoding.UTF8, "application/json");
+            var response = httpClient.PostAsync($"{baseUrl}/descripciondisponible", content).Result;
+            return (response.IsSuccessStatusCode);
+        }
     }
 }

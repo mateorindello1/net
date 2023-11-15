@@ -11,7 +11,7 @@ public partial class Materia
 
     public string Descripcion { get; set; } = null!;
 
-    public float HsSemanales { get; set; }
+    public int HsSemanales { get; set; }
 
     public int HsTotales { get; set; }
 

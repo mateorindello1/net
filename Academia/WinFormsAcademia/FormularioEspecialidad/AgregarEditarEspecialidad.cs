@@ -1,28 +1,26 @@
 ﻿using Entidades;
 using WinFormsAcademia.Servicios;
 
-namespace WinFormsAcademia.FormularioPlan
+namespace WinFormsAcademia.FormularioEspecialidad
 {
-    public partial class AgregarEditarPlan : Form
+    public partial class AgregarEditarEspecialidad : Form
     {
-        private Plan? planAEditar = null;
+        private Especialidad? especialidadAEditar = null;
         private bool editMode = false;
-        public AgregarEditarPlan()
+        public AgregarEditarEspecialidad()
         {
             InitializeComponent();
-            CargarEspecialidades();
-            Text = "Agregar plan";
+            Text = "Agregar especialidad";
         }
 
-        public AgregarEditarPlan(Plan plan)
+        public AgregarEditarEspecialidad(Especialidad especialidad)
         {
             InitializeComponent();
-            CargarEspecialidades();
             editMode = true;
-            Text = "Editar plan";
+            Text = "Editar especialidad";
             lblId.Visible = true;
             txtId.Visible = true;
-            planAEditar = plan;
+            especialidadAEditar = especialidad;
             btnGuardar.Text = "Guardar";
             btnReestablecer.Visible = true;
             Rellenar();
@@ -30,30 +28,16 @@ namespace WinFormsAcademia.FormularioPlan
 
         private void Rellenar()
         {
-            if (planAEditar is not null)
+            if (especialidadAEditar is not null)
             {
-                txtId.Text = planAEditar.IdPlan.ToString();
-                txtDescripcion.Text = planAEditar.Descripcion;
-                cmbEspecialidades.SelectedValue = planAEditar.IdEspecialidad;
+                txtId.Text = especialidadAEditar.IdEspecialidad.ToString();
+                txtDescripcion.Text = especialidadAEditar.Descripcion;
             }
-        }
-
-        private async void CargarEspecialidades()
-        {
-            var especialidades = await EspecialidadServicios.Get();
-            cmbEspecialidades.DataSource = especialidades;
-            cmbEspecialidades.DisplayMember = "Descripcion";
-            cmbEspecialidades.ValueMember = "IdEspecialidad";
-            if (cmbEspecialidades.Items.Count > 0) { cmbEspecialidades.SelectedIndex = 0; } else { cmbEspecialidades.Enabled = false; }
         }
 
         private bool ValidarCampos()
         {
-            if (cmbEspecialidades.SelectedItem.ToString().Length < 1 || !ValidarDescripcion(txtDescripcion.Text))
-            {
-                return false; // Al menos uno de los campos está vacío o en blanco.
-            }
-            return true; // Todos los campos son válidos.
+            return ValidarDescripcion(txtDescripcion.Text);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -65,20 +49,19 @@ namespace WinFormsAcademia.FormularioPlan
         {
             if (ValidarCampos())
             {
-                //Crear nuevo plan
-                Plan nuevoPlan = await PlanServicios.GetOne(Int32.Parse(txtId.Text));
+                //Crear nueva especialidad
+                Especialidad nuevaEspecialidad = await EspecialidadServicios.GetOne(Int32.Parse(txtId.Text));
 
-                nuevoPlan.IdPlan = Int32.Parse(txtId.Text);
-                nuevoPlan.IdEspecialidad = (int)cmbEspecialidades.SelectedValue;
-                nuevoPlan.Descripcion = txtDescripcion.Text;
+                nuevaEspecialidad.IdEspecialidad = Int32.Parse(txtId.Text);
+                nuevaEspecialidad.Descripcion = txtDescripcion.Text;
                 if (editMode)
                 {
-                    var ok = await PlanServicios.Update(nuevoPlan);
+                    var ok = await EspecialidadServicios.Update(nuevaEspecialidad);
                     if (ok) { this.Close(); }
                 }
                 else
                 {
-                    var planAdded = await PlanServicios.Create(nuevoPlan);
+                    var especialidadAdded = await EspecialidadServicios.Create(nuevaEspecialidad);
                 }
                 this.Close();
             }
@@ -110,13 +93,13 @@ namespace WinFormsAcademia.FormularioPlan
         private bool ValidarDescripcion(string text)
         {
             if (txtDescripcion.Text.Length < 2) return false;
-            if (editMode && planAEditar.Descripcion == txtDescripcion.Text)
+            if (editMode && especialidadAEditar.Descripcion == txtDescripcion.Text)
             {
                 return true;
             }
             else if (txtDescripcion.Text.Length >= 2)
             {
-                var disponible = PlanServicios.DescripcionDisponible(txtDescripcion.Text);
+                var disponible = EspecialidadServicios.DescripcionDisponible(txtDescripcion.Text);
                 lblErrDescripcion.Visible = !disponible;
                 return disponible;
             }

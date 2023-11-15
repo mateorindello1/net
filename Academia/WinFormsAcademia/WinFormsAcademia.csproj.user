@@ -13,27 +13,6 @@
     <Compile Update="FormsMenu\MenuDocente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormularioEspecialidad\AgregarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormularioEspecialidad\BusquedaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormularioEspecialidad\EditarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormularioEspecialidad\FormEspecialidad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormularioMateria\AgregarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormularioMateria\BusquedaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormularioMateria\EditarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="FormularioMateria\FormMateria.cs">
       <SubType>Form</SubType>
     </Compile>

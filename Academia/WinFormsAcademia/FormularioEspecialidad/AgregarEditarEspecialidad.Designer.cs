@@ -1,6 +1,6 @@
-﻿namespace WinFormsAcademia.FormularioPlan
+﻿namespace WinFormsAcademia.FormularioEspecialidad
 {
-    partial class AgregarEditarPlan
+    partial class AgregarEditarEspecialidad
     {
         /// <summary>
         /// Required designer variable.
@@ -36,10 +36,7 @@
             lblId = new Label();
             txtId = new TextBox();
             btnReestablecer = new Button();
-            groupBox2 = new GroupBox();
-            cmbEspecialidades = new ComboBox();
             groupBox3.SuspendLayout();
-            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // btnCancelar
@@ -66,12 +63,12 @@
             // 
             groupBox3.Controls.Add(lblErrDescripcion);
             groupBox3.Controls.Add(txtDescripcion);
-            groupBox3.Location = new Point(198, 136);
+            groupBox3.Location = new Point(198, 196);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(311, 97);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
-            groupBox3.Text = "Descripción del plan";
+            groupBox3.Text = "Descripción de la especialidad";
             // 
             // lblErrDescripcion
             // 
@@ -81,7 +78,7 @@
             lblErrDescripcion.Name = "lblErrDescripcion";
             lblErrDescripcion.Size = new Size(299, 15);
             lblErrDescripcion.TabIndex = 0;
-            lblErrDescripcion.Text = "La descripción coincide con otro plan";
+            lblErrDescripcion.Text = "La descripción coincide con otra especialidad";
             lblErrDescripcion.TextAlign = ContentAlignment.MiddleCenter;
             lblErrDescripcion.Visible = false;
             // 
@@ -92,23 +89,24 @@
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(284, 23);
             txtDescripcion.TabIndex = 1;
+            txtDescripcion.KeyPress += txtOnlyAlphanumeric_KeyPress;
             txtDescripcion.Leave += txtDescripcion_Leave;
             // 
             // lblId
             // 
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblId.Location = new Point(249, 80);
+            lblId.Location = new Point(228, 122);
             lblId.Name = "lblId";
-            lblId.Size = new Size(99, 15);
+            lblId.Size = new Size(143, 15);
             lblId.TabIndex = 72;
-            lblId.Text = "Número de plan:";
+            lblId.Text = "Número de especialidad:";
             lblId.Visible = false;
             // 
             // txtId
             // 
             txtId.Enabled = false;
-            txtId.Location = new Point(354, 77);
+            txtId.Location = new Point(378, 119);
             txtId.Name = "txtId";
             txtId.Size = new Size(104, 23);
             txtId.TabIndex = 0;
@@ -125,27 +123,7 @@
             btnReestablecer.Visible = false;
             btnReestablecer.Click += btnReestablecer_Click;
             // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(cmbEspecialidades);
-            groupBox2.Location = new Point(198, 258);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(311, 75);
-            groupBox2.TabIndex = 0;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Especialidad";
-            // 
-            // cmbEspecialidades
-            // 
-            cmbEspecialidades.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbEspecialidades.FormattingEnabled = true;
-            cmbEspecialidades.Items.AddRange(new object[] { "2008", "2016", "2023" });
-            cmbEspecialidades.Location = new Point(51, 30);
-            cmbEspecialidades.Name = "cmbEspecialidades";
-            cmbEspecialidades.Size = new Size(209, 23);
-            cmbEspecialidades.TabIndex = 11;
-            // 
-            // AgregarEditarPlan
+            // AgregarEditarEspecialidad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -154,14 +132,12 @@
             Controls.Add(lblId);
             Controls.Add(txtId);
             Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
-            Name = "AgregarEditarPlan";
+            Name = "AgregarEditarEspecialidad";
             Text = "Agregar/editar plan";
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
-            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -180,7 +156,5 @@
         private TextBox txtId;
         private Button btnReestablecer;
         private Label lblErrDescripcion;
-        private GroupBox groupBox2;
-        private ComboBox cmbEspecialidades;
     }
 }

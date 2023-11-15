@@ -49,8 +49,8 @@ namespace WinFormsAcademia.FormularioPlan
         private async void btEditar_Click(object sender, EventArgs e)
         {
             var planId = Int32.Parse(dgvPlanes.SelectedRows[0].Cells["IdPlan"].Value.ToString());
-            var editPersona = await PlanServicios.GetOne(planId);
-            AgregarEditarPlan editar = new AgregarEditarPlan(editPersona);
+            var editPlan = await PlanServicios.GetOne(planId);
+            AgregarEditarPlan editar = new AgregarEditarPlan(editPlan);
             editar.ShowDialog();
             this.List();
         }
@@ -81,7 +81,7 @@ namespace WinFormsAcademia.FormularioPlan
         {
             var especialidades = new List<Especialidad>
             {
-                new Especialidad { IdEspecialidad = 0, Descripcion = "Todas" },
+                new Especialidad { IdEspecialidad = 0, Descripcion = "<Todas>" },
             };
             especialidades.AddRange(await EspecialidadServicios.Get());
             cmbEspecialidad.DataSource = especialidades;

@@ -20,9 +20,11 @@ namespace WinFormsAcademia.Servicios
             }
             else return null;
         }
-        public static async Task<List<Materia>> Get()
+        public static async Task<List<Materia>> Get(int? idPlan = null)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}");
+            string requestUri = baseUrl;
+            if (idPlan is not null) requestUri += $"?idPlan={idPlan}";
+            var response = await httpClient.GetAsync($"{requestUri}");
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();

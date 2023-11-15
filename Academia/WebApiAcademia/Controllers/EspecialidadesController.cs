@@ -118,5 +118,16 @@ namespace WebApiAcademia.Controllers
         {
             return (_context.Especialidades?.Any(e => e.IdEspecialidad == idEspecialidad)).GetValueOrDefault();
         }
+
+        [HttpPost("descripciondisponible")]
+        public async Task<IActionResult> ValidarDescripcionDisponible([FromBody] string descripcion)
+        {
+            var especialidad = await _context.Especialidades.SingleOrDefaultAsync(x => x.Descripcion == descripcion);
+            if (especialidad is null)
+            {
+                return Ok(true);
+            }
+            else return Conflict("La descripción no está disponible.");
+        }
     }
 }

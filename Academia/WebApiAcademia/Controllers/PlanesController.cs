@@ -23,13 +23,14 @@ namespace WebApiAcademia.Controllers
 
         // GET: api/Planes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Plan>>> GetPlanes()
+        public async Task<ActionResult<IEnumerable<Plan>>> GetPlanes(int? idEspecialidad = null)
         {
           if (_context.Planes == null)
           {
               return NotFound();
           }
-            return await _context.Planes.ToListAsync();
+          if (idEspecialidad is null) { return await _context.Planes.ToListAsync(); }
+          else return await _context.Planes.Where(e => e.IdEspecialidad == idEspecialidad).ToListAsync();
         }
 
         // GET: api/Planes/5

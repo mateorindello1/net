@@ -17,6 +17,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FormularioEspecialidad\AgregarEditarEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormularioEspecialidad\FormEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormularioMateria\AgregarEditarMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormularioMateria\FormMateria.cs" />
     <Compile Update="FormularioPlan\AgregarEditarPlan.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,45 +1,97 @@
 ﻿using Entidades;
 using WinFormsAcademia.Servicios;
-using System.Data;
+using System.Windows.Forms;
 
 namespace WinFormsAcademia.FormularioMateria
 {
     public partial class FormMateria : Form
     {
-        private List<Materia> MateriaList = new List<Materia>();
         public FormMateria()
         {
             InitializeComponent();
-        }
 
+        }
         private async void List()
         {
-            dgvPersonas.DataSource = await MateriaServicios.Get();
-        }
-
-        protected async Task<int> ObtenerUltimoId()
-        {
-            if (MateriaList.Any())
+            if (cmbPlan.SelectedValue is not null && int.TryParse(cmbPlan.SelectedValue.ToString(), out int selectedValue) && selectedValue != 00)
             {
-                // Ordena la lista de personas por ID de manera descendente y toma el primer elemento
-                Materia ultimaPersona = (await MateriaServicios.Get()).OrderByDescending(m => m.IdMateria).First();
-                return ultimaPersona.IdMateria;
+                var materias = await MateriaServicios.Get(selectedValue);
+                dgvMaterias.DataSource = materias;
+            }
+            else dgvMaterias.DataSource = await MateriaServicios.Get();
+            dgvMaterias.Columns["Comisiones"].Visible = false;
+            dgvMaterias.Columns["IdPlanNavigation"].Visible = false;
+            if (dgvMaterias.Rows.Count == 0)
+            {
+                btEliminar.Enabled = false;
+                btEditar.Enabled = false;
             }
             else
             {
-                // Si la lista está vacía, devuelve un valor inicial
-                return 0;
+                btEliminar.Enabled = true;
+                btEditar.Enabled = true;
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void btAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarEditarMateria agregar = new AgregarEditarMateria();
+            agregar.ShowDialog();
             this.List();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void btEditar_Click(object sender, EventArgs e)
         {
+            var materiaId = Int32.Parse(dgvMaterias.SelectedRows[0].Cells["IdMateria"].Value.ToString());
+            var editMateria = await MateriaServicios.GetOne(materiaId);
+            AgregarEditarMateria editar = new AgregarEditarMateria(editMateria);
+            editar.ShowDialog();
+            this.List();
+        }
 
+        private async void btEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvMaterias.SelectedRows.Count > 0)
+            {
+                int personaId = Int32.Parse(dgvMaterias.SelectedRows[0].Cells["IdMateria"].Value.ToString());
+                DialogResult result = MessageBox.Show("Seguro que quieres eliminar esta materia?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    await PersonaServicios.Delete(personaId);
+                }
+
+            }
+            this.List();
+        }
+
+        private void FormMateria_Load(object sender, EventArgs e)
+        {
+            CargarPlanes();
+            this.List();
+        }
+
+        private async void CargarPlanes()
+        {
+            var planes = new List<Plan>
+            {
+                new Plan { IdPlan = 0, Descripcion = "<Todos>" },
+            };
+            planes.AddRange(await PlanServicios.Get());
+            cmbPlan.DataSource = planes;
+            cmbPlan.DisplayMember = "Descripcion";
+            cmbPlan.ValueMember = "IdPlan";
+            cmbPlan.SelectedValue = 0;
+        }
+
+        private void cmbPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.List();
         }
     }
 }
