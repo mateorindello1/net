@@ -4,7 +4,7 @@ namespace WinFormsAcademia
 {
     public partial class Login : Form
     {
-        public Persona? Persona { get; private set; }
+        public Persona? persona { get; private set; }
         public int tipoIngreso { get; private set; }
         public Login()
         {
@@ -18,7 +18,7 @@ namespace WinFormsAcademia
             lblIngresando.Visible = true;
             if (await login())
             {
-                tipoIngreso = Persona.TipoUsuario;
+                tipoIngreso = persona.TipoUsuario;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -45,7 +45,7 @@ namespace WinFormsAcademia
             var prsn = await PersonaServicios.Login(credenciales);
             if (prsn is not null)
             {
-                Persona = prsn;
+                persona = prsn;
                 return true;
             }
             else return false;
@@ -83,9 +83,9 @@ namespace WinFormsAcademia
                 switch (this.tipoIngreso)
                 {
                     case 0:
-                        form = new MenuAlumno(); break;
+                        form = new MenuAlumno(persona); break;
                     case 1:
-                        form = new MenuDocente(); break;
+                        form = new MenuDocente(persona); break;
                     case 2:
                         form = new MenuAdmin(); break;
                     default:

@@ -7,7 +7,7 @@ namespace WinFormsAcademia.FormularioPersona
     public partial class FormPersona : Form
     {
         int? rol = null;
-        public FormPersona(int? tipo)
+        public FormPersona(int? tipo=null)
         {
             InitializeComponent();
             if (tipo is not null) { rol = tipo; }

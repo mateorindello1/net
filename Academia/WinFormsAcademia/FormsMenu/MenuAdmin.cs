@@ -10,87 +10,53 @@ namespace WinFormsAcademia
 {
     public partial class MenuAdmin : Form
     {
+        private const int alumno = 0;
+        private const int docente = 1;
+        private const int admin = 2;
         public MenuAdmin()
         {
             InitializeComponent();
         }
-
-        private void btnPlanes_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FormPlan planesCrud = new FormPlan();
-            planesCrud.StartPosition = FormStartPosition.Manual;
-            planesCrud.Location = new Point(
-                MdiParent.Location.X + (MdiParent.Width - planesCrud.Width) / 2,
-                MdiParent.Location.Y + (MdiParent.Height - planesCrud.Height) / 2
-            );
-            planesCrud.ShowDialog();
-            this.Show();
-        }
-
-        private void btnEspecialidades_Click(object sender, EventArgs e)
-        {
-            FormEspecialidad especialidadesCrud = new FormEspecialidad();
-            especialidadesCrud.ShowDialog();
-        }
-
-        private void btnMaterias_Click(object sender, EventArgs e)
-        {
-            FormMateria materiasCrud = new FormMateria();
-            materiasCrud.ShowDialog();
-        }
+        //USUARIOS
         private void btnTodos_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FormPersona todosCrud = new FormPersona(null);
-            todosCrud.StartPosition = FormStartPosition.Manual;
-            todosCrud.Location = new Point(
-                MdiParent.Location.X + (MdiParent.Width - todosCrud.Width) / 2,
-                MdiParent.Location.Y + (MdiParent.Height - todosCrud.Height) / 2
-            );
-            todosCrud.ShowDialog();
-            this.Show();
+            mostrarForm(new FormPersona());
         }
         private void btnAlumnos_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FormPersona alumnosCrud = new FormPersona(0);
-            alumnosCrud.StartPosition = FormStartPosition.Manual;
-            alumnosCrud.Location = new Point(
-                MdiParent.Location.X + (MdiParent.Width - alumnosCrud.Width) / 2,
-                MdiParent.Location.Y + (MdiParent.Height - alumnosCrud.Height) / 2
-            );
-            alumnosCrud.ShowDialog();
-            this.Show();
+            mostrarForm(new FormPersona(alumno));
         }
         private void btnDocentes_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FormPersona docentesCrud = new FormPersona(1);
-            docentesCrud.StartPosition = FormStartPosition.Manual;
-            docentesCrud.Location = new Point(
-                MdiParent.Location.X + (MdiParent.Width - docentesCrud.Width) / 2,
-                MdiParent.Location.Y + (MdiParent.Height - docentesCrud.Height) / 2
-            );
-            docentesCrud.ShowDialog();
-            this.Show();
+            mostrarForm(new FormPersona(docente));
         }
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FormPersona adminCrud = new FormPersona(2);
-            adminCrud.StartPosition = FormStartPosition.Manual;
-            adminCrud.Location = new Point(
-                MdiParent.Location.X + (MdiParent.Width - adminCrud.Width) / 2,
-                MdiParent.Location.Y + (MdiParent.Height - adminCrud.Height) / 2
-            );
-            adminCrud.ShowDialog();
-            this.Show();
+            mostrarForm(new FormPersona(admin));
         }
+        // ADMINISTRACION DE DATOS
+        private void btnPlanes_Click(object sender, EventArgs e)
+        {
+            mostrarForm(new FormPlan());
+        }
+        private void btnEspecialidades_Click(object sender, EventArgs e)
+        {
+            mostrarForm(new FormEspecialidad());
+        }
+        private void btnMaterias_Click(object sender, EventArgs e)
+        {
+            mostrarForm(new FormMateria());
+        }
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
+            //mostrarForm(new FormCursos());
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Retry;
@@ -112,5 +78,23 @@ namespace WinFormsAcademia
                 login.Show();
             }
         }
+
+        private void mostrarForm(Form form)
+        {
+            this.Hide();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(
+                MdiParent.Location.X + (MdiParent.Width - form.Width) / 2,
+                MdiParent.Location.Y + (MdiParent.Height - form.Height) / 2
+            );
+            form.ShowDialog();
+            this.Show();
+        }
+
+        private void MenuAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

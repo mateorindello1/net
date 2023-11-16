@@ -33,11 +33,12 @@
             btnPlanes = new Button();
             btnEspecialidades = new Button();
             groupBox1 = new GroupBox();
-            btnTodos = new Button();
+            btnCursos = new Button();
             btnComisiones = new Button();
+            btnMaterias = new Button();
+            btnTodos = new Button();
             btnDocentes = new Button();
             btnAlumnos = new Button();
-            btnMaterias = new Button();
             btnReporteCursos = new Button();
             groupBox2 = new GroupBox();
             btnInscripcionMaterias = new Button();
@@ -45,9 +46,11 @@
             btnRegistroNotas = new Button();
             btnCerrarSesion = new Button();
             btnExit = new Button();
+            groupBox4 = new GroupBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitle
@@ -62,7 +65,7 @@
             // 
             // btnAdmin
             // 
-            btnAdmin.Location = new Point(6, 36);
+            btnAdmin.Location = new Point(10, 47);
             btnAdmin.Name = "btnAdmin";
             btnAdmin.Size = new Size(189, 44);
             btnAdmin.TabIndex = 1;
@@ -72,7 +75,7 @@
             // 
             // btnPlanes
             // 
-            btnPlanes.Location = new Point(229, 36);
+            btnPlanes.Location = new Point(10, 33);
             btnPlanes.Name = "btnPlanes";
             btnPlanes.Size = new Size(189, 44);
             btnPlanes.TabIndex = 2;
@@ -82,7 +85,7 @@
             // 
             // btnEspecialidades
             // 
-            btnEspecialidades.Location = new Point(229, 92);
+            btnEspecialidades.Location = new Point(10, 89);
             btnEspecialidades.Name = "btnEspecialidades";
             btnEspecialidades.Size = new Size(189, 44);
             btnEspecialidades.TabIndex = 3;
@@ -92,24 +95,50 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnTodos);
+            groupBox1.Controls.Add(btnCursos);
             groupBox1.Controls.Add(btnComisiones);
-            groupBox1.Controls.Add(btnDocentes);
-            groupBox1.Controls.Add(btnAlumnos);
             groupBox1.Controls.Add(btnMaterias);
-            groupBox1.Controls.Add(btnAdmin);
             groupBox1.Controls.Add(btnEspecialidades);
             groupBox1.Controls.Add(btnPlanes);
-            groupBox1.Location = new Point(34, 100);
+            groupBox1.Location = new Point(258, 72);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(429, 284);
+            groupBox1.Size = new Size(210, 312);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Administración de datos";
             // 
+            // btnCursos
+            // 
+            btnCursos.Location = new Point(10, 253);
+            btnCursos.Name = "btnCursos";
+            btnCursos.Size = new Size(189, 44);
+            btnCursos.TabIndex = 9;
+            btnCursos.Text = "Cursos";
+            btnCursos.UseVisualStyleBackColor = true;
+            btnCursos.Click += btnCursos_Click;
+            // 
+            // btnComisiones
+            // 
+            btnComisiones.Location = new Point(10, 199);
+            btnComisiones.Name = "btnComisiones";
+            btnComisiones.Size = new Size(189, 44);
+            btnComisiones.TabIndex = 7;
+            btnComisiones.Text = "Comisiones";
+            btnComisiones.UseVisualStyleBackColor = true;
+            // 
+            // btnMaterias
+            // 
+            btnMaterias.Location = new Point(10, 144);
+            btnMaterias.Name = "btnMaterias";
+            btnMaterias.Size = new Size(189, 44);
+            btnMaterias.TabIndex = 4;
+            btnMaterias.Text = "Materias";
+            btnMaterias.UseVisualStyleBackColor = true;
+            btnMaterias.Click += btnMaterias_Click;
+            // 
             // btnTodos
             // 
-            btnTodos.Location = new Point(6, 202);
+            btnTodos.Location = new Point(10, 235);
             btnTodos.Name = "btnTodos";
             btnTodos.Size = new Size(189, 44);
             btnTodos.TabIndex = 8;
@@ -117,18 +146,9 @@
             btnTodos.UseVisualStyleBackColor = true;
             btnTodos.Click += btnTodos_Click;
             // 
-            // btnComisiones
-            // 
-            btnComisiones.Location = new Point(229, 202);
-            btnComisiones.Name = "btnComisiones";
-            btnComisiones.Size = new Size(189, 44);
-            btnComisiones.TabIndex = 7;
-            btnComisiones.Text = "Comisiones";
-            btnComisiones.UseVisualStyleBackColor = true;
-            // 
             // btnDocentes
             // 
-            btnDocentes.Location = new Point(6, 147);
+            btnDocentes.Location = new Point(10, 172);
             btnDocentes.Name = "btnDocentes";
             btnDocentes.Size = new Size(189, 44);
             btnDocentes.TabIndex = 6;
@@ -138,7 +158,7 @@
             // 
             // btnAlumnos
             // 
-            btnAlumnos.Location = new Point(6, 92);
+            btnAlumnos.Location = new Point(10, 110);
             btnAlumnos.Name = "btnAlumnos";
             btnAlumnos.Size = new Size(189, 44);
             btnAlumnos.TabIndex = 5;
@@ -146,19 +166,9 @@
             btnAlumnos.UseVisualStyleBackColor = true;
             btnAlumnos.Click += btnAlumnos_Click;
             // 
-            // btnMaterias
-            // 
-            btnMaterias.Location = new Point(229, 147);
-            btnMaterias.Name = "btnMaterias";
-            btnMaterias.Size = new Size(189, 44);
-            btnMaterias.TabIndex = 4;
-            btnMaterias.Text = "Materias";
-            btnMaterias.UseVisualStyleBackColor = true;
-            btnMaterias.Click += btnMaterias_Click;
-            // 
             // btnReporteCursos
             // 
-            btnReporteCursos.Location = new Point(11, 92);
+            btnReporteCursos.Location = new Point(11, 109);
             btnReporteCursos.Name = "btnReporteCursos";
             btnReporteCursos.Size = new Size(189, 44);
             btnReporteCursos.TabIndex = 5;
@@ -188,16 +198,16 @@
             // 
             groupBox3.Controls.Add(btnReporteCursos);
             groupBox3.Controls.Add(btnRegistroNotas);
-            groupBox3.Location = new Point(487, 100);
+            groupBox3.Location = new Point(487, 72);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(212, 156);
+            groupBox3.Size = new Size(212, 184);
             groupBox3.TabIndex = 6;
             groupBox3.TabStop = false;
             groupBox3.Text = "Profesores";
             // 
             // btnRegistroNotas
             // 
-            btnRegistroNotas.Location = new Point(11, 36);
+            btnRegistroNotas.Location = new Point(11, 43);
             btnRegistroNotas.Name = "btnRegistroNotas";
             btnRegistroNotas.Size = new Size(189, 44);
             btnRegistroNotas.TabIndex = 0;
@@ -225,12 +235,26 @@
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(btnDocentes);
+            groupBox4.Controls.Add(btnAdmin);
+            groupBox4.Controls.Add(btnTodos);
+            groupBox4.Controls.Add(btnAlumnos);
+            groupBox4.Location = new Point(28, 72);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(210, 312);
+            groupBox4.TabIndex = 9;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Usuarios";
+            // 
             // MenuAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnExit;
             ClientSize = new Size(727, 457);
+            Controls.Add(groupBox4);
             Controls.Add(btnExit);
             Controls.Add(btnCerrarSesion);
             Controls.Add(groupBox3);
@@ -242,9 +266,11 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "ACADEMIA";
             FormClosed += MenuAdmin_FormClosed;
+            Load += MenuAdmin_Load;
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -267,5 +293,7 @@
         private Button btnDocentes;
         private Button btnAlumnos;
         private Button btnTodos;
+        private Button btnCursos;
+        private GroupBox groupBox4;
     }
 }

@@ -9,9 +9,11 @@ namespace WinFormsAcademia
 {
     public partial class MenuAlumno : Form
     {
-        public MenuAlumno()
+        private Persona alumno;
+        public MenuAlumno(Persona persona)
         {
             InitializeComponent();
+            this.alumno = persona;
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -54,6 +56,17 @@ namespace WinFormsAcademia
         private void btnNotas_Click(object sender, EventArgs e)
         {
 
+        }
+        private void mostrarForm(Form form)
+        {
+            this.Hide();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(
+                MdiParent.Location.X + (MdiParent.Width - form.Width) / 2,
+                MdiParent.Location.Y + (MdiParent.Height - form.Height) / 2
+            );
+            form.ShowDialog();
+            this.Show();
         }
     }
 }

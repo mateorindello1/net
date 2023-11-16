@@ -35,4 +35,9 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="FormularioComision\" />
+    <Folder Include="FormularioCurso\" />
+  </ItemGroup>
+
 </Project>
