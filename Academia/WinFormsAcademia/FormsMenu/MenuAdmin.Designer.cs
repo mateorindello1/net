@@ -125,6 +125,7 @@
             btnComisiones.TabIndex = 7;
             btnComisiones.Text = "Comisiones";
             btnComisiones.UseVisualStyleBackColor = true;
+            btnComisiones.Click += btnComisiones_Click;
             // 
             // btnMaterias
             // 

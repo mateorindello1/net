@@ -50,20 +50,24 @@ namespace WinFormsAcademia.FormularioEspecialidad
             if (ValidarCampos())
             {
                 //Crear nueva especialidad
-                Especialidad nuevaEspecialidad = await EspecialidadServicios.GetOne(Int32.Parse(txtId.Text));
-
-                nuevaEspecialidad.IdEspecialidad = Int32.Parse(txtId.Text);
-                nuevaEspecialidad.Descripcion = txtDescripcion.Text;
+                Especialidad nuevaEspecialidad = new Especialidad()
+                {
+                    IdEspecialidad = 0,
+                    Descripcion = txtDescripcion.Text,
+                };
                 if (editMode)
                 {
+                    nuevaEspecialidad.IdEspecialidad = especialidadAEditar.IdEspecialidad;
                     var ok = await EspecialidadServicios.Update(nuevaEspecialidad);
                     if (ok) { this.Close(); }
+                    else MessageBox.Show("Error al guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     var especialidadAdded = await EspecialidadServicios.Create(nuevaEspecialidad);
+                    if (especialidadAdded is not null) { this.Close(); }
+                    else MessageBox.Show("Error al guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                this.Close();
             }
             else
             {
@@ -79,7 +83,7 @@ namespace WinFormsAcademia.FormularioEspecialidad
 
         private void txtOnlyAlphanumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && !".-_".Contains(e.KeyChar))
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && !".-_ ".Contains(e.KeyChar))
             {
                 e.Handled = true;
             }

@@ -66,21 +66,25 @@ namespace WinFormsAcademia.FormularioPlan
             if (ValidarCampos())
             {
                 //Crear nuevo plan
-                Plan nuevoPlan = await PlanServicios.GetOne(Int32.Parse(txtId.Text));
-
-                nuevoPlan.IdPlan = Int32.Parse(txtId.Text);
-                nuevoPlan.IdEspecialidad = (int)cmbEspecialidades.SelectedValue;
-                nuevoPlan.Descripcion = txtDescripcion.Text;
+                Plan nuevoPlan = new Plan()
+                {
+                    IdPlan = 0,
+                    IdEspecialidad = (int)cmbEspecialidades.SelectedValue,
+                    Descripcion = txtDescripcion.Text,
+                };
                 if (editMode)
                 {
+                    nuevoPlan.IdPlan = planAEditar.IdPlan;
                     var ok = await PlanServicios.Update(nuevoPlan);
                     if (ok) { this.Close(); }
+                    else MessageBox.Show("Error al guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     var planAdded = await PlanServicios.Create(nuevoPlan);
+                    if (planAdded is not null) { this.Close(); }
+                    else MessageBox.Show("Error al guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                this.Close();
             }
             else
             {
@@ -96,7 +100,7 @@ namespace WinFormsAcademia.FormularioPlan
 
         private void txtOnlyAlphanumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && !".-_".Contains(e.KeyChar))
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && !".-_ ".Contains(e.KeyChar))
             {
                 e.Handled = true;
             }

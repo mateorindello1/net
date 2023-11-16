@@ -23,13 +23,26 @@ namespace WebApiAcademia.Controllers
 
         // GET: api/Cursos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Curso>>> GetCursos()
+        public async Task<ActionResult<IEnumerable<Curso>>> GetCursos(int? idPlanFilter = null, int? idMateriaFilter = null, int? idComisionFilter = null)
         {
-          if (_context.Cursos == null)
-          {
-              return NotFound();
-          }
-            return await _context.Cursos.ToListAsync();
+            IQueryable<Curso> query = _context.Cursos;
+            if (query == null)
+            {
+                return NotFound();
+            }
+            if (idPlanFilter is not null)
+            {
+                query = query.Where(curso => curso.IdPlan == idPlanFilter);
+            }
+            if (idMateriaFilter is not null)
+            {
+                query = query.Where(curso => curso.IdMateria == idMateriaFilter);
+            }
+            if (idComisionFilter is not null)
+            {
+                query = query.Where(curso => curso.IdComision == idComisionFilter);
+            }
+            return await query.ToListAsync();
         }
 
         // GET: api/Cursos/5

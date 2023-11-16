@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApiAcademia.Context;
 using Entidades;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace WebApiAcademia.Controllers
 {
@@ -23,13 +24,22 @@ namespace WebApiAcademia.Controllers
 
         // GET: api/Comisiones
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Comision>>> GetComisiones()
+        public async Task<ActionResult<IEnumerable<Comision>>> GetComisiones(int? idPlanFilter = null, int? idMateriaFilter = null)
         {
-          if (_context.Comisiones == null)
-          {
-              return NotFound();
-          }
-            return await _context.Comisiones.ToListAsync();
+            IQueryable<Comision> query = _context.Comisiones;
+            if (query == null)
+            {
+                return NotFound();
+            }
+            if (idPlanFilter is not null)
+            {
+                query = query.Where(comision => comision.IdPlan == idPlanFilter);
+            }
+            if (idMateriaFilter is not null)
+            {
+                query = query.Where(comision => comision.IdMateria == idMateriaFilter);
+            }
+            return await query.ToListAsync();
         }
 
         // GET: api/Comisiones/5

@@ -20,9 +20,13 @@ namespace WinFormsAcademia.Servicios
             }
             else return null;
         }
-        public static async Task<List<Curso>> Get()
+        public static async Task<List<Curso>> Get(int? idPlanFilter = null, int? idMateriaFilter = null, int? idComisionFilter = null)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}");
+            string requestUri = baseUrl;
+            if (idPlanFilter is not null) requestUri += $"?idPlanFilter={idPlanFilter}";
+            if (idMateriaFilter is not null) requestUri += $"&idMateriaFilter={idMateriaFilter}";
+            if (idComisionFilter is not null) requestUri += $"&idComisionFilter={idComisionFilter}";
+            var response = await httpClient.GetAsync($"{requestUri}");
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();

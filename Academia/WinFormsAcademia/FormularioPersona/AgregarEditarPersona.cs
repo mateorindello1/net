@@ -99,31 +99,33 @@ namespace WinFormsAcademia.FormularioPersona
             if (ValidarCampos())
             {
                 //Crear nueva persona
-                Persona nuevaPersona = await PersonaServicios.GetOne(Int32.Parse(txtId.Text), null);
-
-                nuevaPersona.Legajo = Int32.Parse(txtId.Text);
-                nuevaPersona.Apellido = txtApellido.Text;
-                nuevaPersona.Nombre = txtNombre.Text;
-                nuevaPersona.Direccion = txtDireccion.Text;
-                nuevaPersona.Email = txtEmail.Text;
-                DateTime fechaNac;
-                fechaNac = DateTime.Parse(maskedTextBox1.Text);
-                nuevaPersona.FechaNacimiento = fechaNac;
-                nuevaPersona.IdPlan = (int)cmbPlan.SelectedValue;
-                nuevaPersona.Telefono = txtTelefono.Text;
-                nuevaPersona.NombreUsuario = txtUsuario.Text;
-                nuevaPersona.Password = txtContraseña.Text;
-                nuevaPersona.TipoUsuario = cmbTipo.SelectedIndex;
+                Persona nuevaPersona = new Persona()
+                {
+                    Legajo = 0,
+                    Apellido = txtApellido.Text,
+                    Nombre = txtNombre.Text,
+                    Direccion = txtDireccion.Text,
+                    Email = txtEmail.Text,
+                    FechaNacimiento = DateTime.Parse(maskedTextBox1.Text),
+                    IdPlan = (int)cmbPlan.SelectedValue,
+                    Telefono = txtTelefono.Text,
+                    NombreUsuario = txtUsuario.Text,
+                    Password = txtContraseña.Text,
+                    TipoUsuario = cmbTipo.SelectedIndex
+                };
                 if (editMode)
                 {
+                    nuevaPersona.Legajo = Int32.Parse(txtId.Text);
                     var ok = await PersonaServicios.Update(nuevaPersona);
                     if (ok) { this.Close(); }
+                    else MessageBox.Show("Error al guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     var personaAdded = await PersonaServicios.Create(nuevaPersona);
+                    if (personaAdded is not null) { this.Close(); }
+                    else MessageBox.Show("Error al guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                this.Close();
             }
             else
             {

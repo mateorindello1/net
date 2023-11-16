@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entidades;
 
 public partial class Plan
 {
+    [Key]
     public int IdPlan { get; set; }
 
     public string Descripcion { get; set; } = null!;

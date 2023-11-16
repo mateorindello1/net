@@ -92,6 +92,7 @@
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(284, 23);
             txtDescripcion.TabIndex = 1;
+            txtDescripcion.KeyPress += txtOnlyAlphanumeric_KeyPress;
             txtDescripcion.Leave += txtDescripcion_Leave;
             // 
             // lblId

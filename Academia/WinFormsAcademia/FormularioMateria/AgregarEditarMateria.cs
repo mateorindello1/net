@@ -66,7 +66,9 @@ namespace WinFormsAcademia.FormularioMateria
             if (txtDescripcion.Text.Length < 2 ||
                 txtNombre.Text.Length < 2 ||
                 cmbPlan.SelectedItem.ToString().Length < 1 ||
-                cmbTipo.SelectedItem.ToString().Length < 1)
+                cmbTipo.SelectedItem.ToString().Length < 1 ||
+                txtHsSem.Text.Length == 0 ||
+                txtHsTot.Text.Length == 0)
             {
                 return false; // Al menos uno de los campos está vacío o en blanco.
             }
@@ -83,22 +85,27 @@ namespace WinFormsAcademia.FormularioMateria
             if (ValidarCampos())
             {
                 //Crear nueva materia
-                Materia nuevaMateria = await MateriaServicios.GetOne(Int32.Parse(txtId.Text));
-
-                nuevaMateria.IdMateria = Int32.Parse(txtId.Text);
-                nuevaMateria.Descripcion = txtDescripcion.Text;
-                nuevaMateria.Nombre = txtNombre.Text;
-                nuevaMateria.HsSemanales = Int32.Parse(txtHsSem.Text);
-                nuevaMateria.HsTotales = Int32.Parse(txtHsTot.Text);
-                nuevaMateria.IdPlan = (int)cmbPlan.SelectedValue;
+                Materia nuevaMateria = new Materia()
+                {
+                    IdMateria = 0,
+                    Descripcion = txtDescripcion.Text,
+                    Nombre = txtNombre.Text,
+                    HsSemanales = Int32.Parse(txtHsSem.Text),
+                    HsTotales = Int32.Parse(txtHsTot.Text),
+                    IdPlan = (int)cmbPlan.SelectedValue,
+                };
                 if (editMode)
                 {
+                    nuevaMateria.IdMateria = Int32.Parse(txtId.Text);
                     var ok = await MateriaServicios.Update(nuevaMateria);
                     if (ok) { this.Close(); }
+                    else MessageBox.Show("Error al guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     var materiaAdded = await MateriaServicios.Create(nuevaMateria);
+                    if (materiaAdded is not null) { this.Close(); }
+                    else MessageBox.Show("Error al guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 this.Close();
             }
@@ -116,7 +123,7 @@ namespace WinFormsAcademia.FormularioMateria
 
         private void txtOnlyAlpha_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back && !".-_".Contains(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back && !".-_ ".Contains(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -132,20 +139,29 @@ namespace WinFormsAcademia.FormularioMateria
 
         private void txtHsSem_Leave(object sender, EventArgs e)
         {
-            if (cmbTipo.SelectedIndex == 0)
-            {
-                txtHsTot.Text = (Int32.Parse(txtHsSem.Text) * multHorasCuatrimestre).ToString();
-            }
-            else txtHsTot.Text = (Int32.Parse(txtHsSem.Text) * multHorasCuatrimestre * 2).ToString();
+            cambiarValorHs();
         }
 
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTipo.SelectedIndex == 0)
+            cambiarValorHs();
+        }
+
+        private void txtHsSem_KeyUp(object sender, KeyEventArgs e)
+        {
+            cambiarValorHs();
+        }
+        private void cambiarValorHs()
+        {
+            if (txtHsSem.Text.Length > 0)
             {
-                txtHsTot.Text = (Int32.Parse(txtHsSem.Text) * multHorasCuatrimestre).ToString();
+                if (cmbTipo.SelectedIndex == 1)
+                {
+                    txtHsTot.Text = (Int32.Parse(txtHsSem.Text) * multHorasCuatrimestre).ToString();
+                }
+                else txtHsTot.Text = (Int32.Parse(txtHsSem.Text) * multHorasCuatrimestre * 2).ToString();
             }
-            else txtHsTot.Text = (Int32.Parse(txtHsSem.Text) * multHorasCuatrimestre * 2).ToString();
+            else txtHsTot.Text = "";
         }
     }
 }

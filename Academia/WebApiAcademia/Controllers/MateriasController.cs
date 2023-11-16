@@ -25,13 +25,16 @@ namespace WebApiAcademia.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Materia>>> GetMaterias(int? idPlan=null)
         {
-          if (_context.Materias == null)
-          {
-              return NotFound();
-          }
-          if (idPlan is null) { return await _context.Materias.ToListAsync(); }
-          else return await _context.Materias.Where(m => m.IdPlan == idPlan).ToListAsync();
-
+            IQueryable<Materia> query = _context.Materias;
+            if (query == null)
+            {
+                return NotFound();
+            }
+            if (idPlan is not null)
+            {
+                query = query.Where(materia => materia.IdPlan == idPlan);
+            }
+            return await query.ToListAsync();
         }
 
         // GET: api/Materias/5

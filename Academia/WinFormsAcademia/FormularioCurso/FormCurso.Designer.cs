@@ -1,6 +1,6 @@
-﻿namespace WinFormsAcademia.FormularioMateria
+﻿namespace WinFormsAcademia.FormularioCurso
 {
-    partial class FormMateria
+    partial class FormCurso
     {
         /// <summary>
         /// Required designer variable.
@@ -33,10 +33,12 @@
             btEliminar = new Button();
             btEditar = new Button();
             btAgregar = new Button();
-            dgvMaterias = new DataGridView();
+            dgvCursos = new DataGridView();
             lblFilter = new Label();
             cmbPlan = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dgvMaterias).BeginInit();
+            cmbMateria = new ComboBox();
+            cmbComision = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)dgvCursos).BeginInit();
             SuspendLayout();
             // 
             // button2
@@ -58,7 +60,7 @@
             label1.Name = "label1";
             label1.Size = new Size(530, 78);
             label1.TabIndex = 13;
-            label1.Text = "Materias";
+            label1.Text = "Cursos";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btEliminar
@@ -79,7 +81,7 @@
             btEditar.BackColor = Color.Orange;
             btEditar.Font = new Font("Bahnschrift SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btEditar.ForeColor = SystemColors.ButtonFace;
-            btEditar.Location = new Point(627, 279);
+            btEditar.Location = new Point(627, 301);
             btEditar.Name = "btEditar";
             btEditar.Size = new Size(134, 45);
             btEditar.TabIndex = 11;
@@ -92,7 +94,7 @@
             btAgregar.BackColor = Color.YellowGreen;
             btAgregar.Font = new Font("Bahnschrift", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btAgregar.ForeColor = SystemColors.ButtonFace;
-            btAgregar.Location = new Point(627, 196);
+            btAgregar.Location = new Point(627, 239);
             btAgregar.Name = "btAgregar";
             btAgregar.Size = new Size(134, 45);
             btAgregar.TabIndex = 10;
@@ -100,45 +102,66 @@
             btAgregar.UseVisualStyleBackColor = false;
             btAgregar.Click += btAgregar_Click;
             // 
-            // dgvMaterias
+            // dgvCursos
             // 
-            dgvMaterias.AllowUserToAddRows = false;
-            dgvMaterias.AllowUserToDeleteRows = false;
-            dgvMaterias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaterias.Location = new Point(51, 109);
-            dgvMaterias.MultiSelect = false;
-            dgvMaterias.Name = "dgvMaterias";
-            dgvMaterias.ReadOnly = true;
-            dgvMaterias.RowTemplate.Height = 25;
-            dgvMaterias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMaterias.Size = new Size(530, 308);
-            dgvMaterias.TabIndex = 8;
+            dgvCursos.AllowUserToAddRows = false;
+            dgvCursos.AllowUserToDeleteRows = false;
+            dgvCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCursos.Location = new Point(51, 109);
+            dgvCursos.MultiSelect = false;
+            dgvCursos.Name = "dgvCursos";
+            dgvCursos.ReadOnly = true;
+            dgvCursos.RowTemplate.Height = 25;
+            dgvCursos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCursos.Size = new Size(530, 308);
+            dgvCursos.TabIndex = 8;
             // 
             // lblFilter
             // 
-            lblFilter.Location = new Point(627, 109);
+            lblFilter.Location = new Point(628, 111);
             lblFilter.Name = "lblFilter";
-            lblFilter.Size = new Size(134, 23);
+            lblFilter.Size = new Size(134, 32);
             lblFilter.TabIndex = 21;
-            lblFilter.Text = "Filtrar por plan:";
+            lblFilter.Text = "Filtrar por plan, \r\nmateria y comisión:";
             lblFilter.TextAlign = ContentAlignment.TopCenter;
             // 
             // cmbPlan
             // 
             cmbPlan.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPlan.FormattingEnabled = true;
-            cmbPlan.Location = new Point(628, 133);
+            cmbPlan.Location = new Point(628, 146);
             cmbPlan.Name = "cmbPlan";
             cmbPlan.Size = new Size(134, 23);
             cmbPlan.TabIndex = 22;
             cmbPlan.SelectedIndexChanged += cmbPlan_SelectedIndexChanged;
             // 
-            // FormMateria
+            // cmbMateria
+            // 
+            cmbMateria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMateria.FormattingEnabled = true;
+            cmbMateria.Location = new Point(628, 176);
+            cmbMateria.Name = "cmbMateria";
+            cmbMateria.Size = new Size(134, 23);
+            cmbMateria.TabIndex = 23;
+            cmbMateria.SelectedIndexChanged += cmbMateria_SelectedIndexChanged;
+            // 
+            // cmbComision
+            // 
+            cmbComision.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbComision.FormattingEnabled = true;
+            cmbComision.Location = new Point(628, 206);
+            cmbComision.Name = "cmbComision";
+            cmbComision.Size = new Size(134, 23);
+            cmbComision.TabIndex = 24;
+            // 
+            // FormCurso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = button2;
             ClientSize = new Size(800, 450);
+            Controls.Add(cmbComision);
+            Controls.Add(cmbMateria);
             Controls.Add(cmbPlan);
             Controls.Add(lblFilter);
             Controls.Add(button2);
@@ -146,15 +169,15 @@
             Controls.Add(btEliminar);
             Controls.Add(btEditar);
             Controls.Add(btAgregar);
-            Controls.Add(dgvMaterias);
+            Controls.Add(dgvCursos);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "FormMateria";
+            Name = "FormCurso";
             ShowInTaskbar = false;
             Text = "Usuarios";
-            Load += FormMateria_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvMaterias).EndInit();
+            Load += FormCurso_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvCursos).EndInit();
             ResumeLayout(false);
         }
 
@@ -165,8 +188,10 @@
         private Button btEliminar;
         private Button btEditar;
         private Button btAgregar;
-        private DataGridView dgvMaterias;
+        private DataGridView dgvCursos;
         private Label lblFilter;
         private ComboBox cmbPlan;
+        private ComboBox cmbMateria;
+        private ComboBox cmbComision;
     }
 }

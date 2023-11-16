@@ -1,6 +1,6 @@
-﻿namespace WinFormsAcademia.FormularioMateria
+﻿namespace WinFormsAcademia.FormularioComision
 {
-    partial class FormMateria
+    partial class FormComision
     {
         /// <summary>
         /// Required designer variable.
@@ -33,10 +33,11 @@
             btEliminar = new Button();
             btEditar = new Button();
             btAgregar = new Button();
-            dgvMaterias = new DataGridView();
+            dgvComisiones = new DataGridView();
             lblFilter = new Label();
             cmbPlan = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dgvMaterias).BeginInit();
+            cmbMateria = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)dgvComisiones).BeginInit();
             SuspendLayout();
             // 
             // button2
@@ -58,7 +59,7 @@
             label1.Name = "label1";
             label1.Size = new Size(530, 78);
             label1.TabIndex = 13;
-            label1.Text = "Materias";
+            label1.Text = "Comisiones";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btEliminar
@@ -100,27 +101,27 @@
             btAgregar.UseVisualStyleBackColor = false;
             btAgregar.Click += btAgregar_Click;
             // 
-            // dgvMaterias
+            // dgvComisiones
             // 
-            dgvMaterias.AllowUserToAddRows = false;
-            dgvMaterias.AllowUserToDeleteRows = false;
-            dgvMaterias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaterias.Location = new Point(51, 109);
-            dgvMaterias.MultiSelect = false;
-            dgvMaterias.Name = "dgvMaterias";
-            dgvMaterias.ReadOnly = true;
-            dgvMaterias.RowTemplate.Height = 25;
-            dgvMaterias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMaterias.Size = new Size(530, 308);
-            dgvMaterias.TabIndex = 8;
+            dgvComisiones.AllowUserToAddRows = false;
+            dgvComisiones.AllowUserToDeleteRows = false;
+            dgvComisiones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvComisiones.Location = new Point(51, 109);
+            dgvComisiones.MultiSelect = false;
+            dgvComisiones.Name = "dgvComisiones";
+            dgvComisiones.ReadOnly = true;
+            dgvComisiones.RowTemplate.Height = 25;
+            dgvComisiones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvComisiones.Size = new Size(530, 308);
+            dgvComisiones.TabIndex = 8;
             // 
             // lblFilter
             // 
-            lblFilter.Location = new Point(627, 109);
+            lblFilter.Location = new Point(622, 109);
             lblFilter.Name = "lblFilter";
-            lblFilter.Size = new Size(134, 23);
+            lblFilter.Size = new Size(146, 23);
             lblFilter.TabIndex = 21;
-            lblFilter.Text = "Filtrar por plan:";
+            lblFilter.Text = "Filtrar por plan y materia:";
             lblFilter.TextAlign = ContentAlignment.TopCenter;
             // 
             // cmbPlan
@@ -133,12 +134,23 @@
             cmbPlan.TabIndex = 22;
             cmbPlan.SelectedIndexChanged += cmbPlan_SelectedIndexChanged;
             // 
-            // FormMateria
+            // cmbMateria
+            // 
+            cmbMateria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMateria.FormattingEnabled = true;
+            cmbMateria.Location = new Point(628, 164);
+            cmbMateria.Name = "cmbMateria";
+            cmbMateria.Size = new Size(134, 23);
+            cmbMateria.TabIndex = 23;
+            cmbMateria.SelectedIndexChanged += cmbMateria_SelectedIndexChanged;
+            // 
+            // FormComision
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = button2;
             ClientSize = new Size(800, 450);
+            Controls.Add(cmbMateria);
             Controls.Add(cmbPlan);
             Controls.Add(lblFilter);
             Controls.Add(button2);
@@ -146,15 +158,15 @@
             Controls.Add(btEliminar);
             Controls.Add(btEditar);
             Controls.Add(btAgregar);
-            Controls.Add(dgvMaterias);
+            Controls.Add(dgvComisiones);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "FormMateria";
+            Name = "FormComision";
             ShowInTaskbar = false;
             Text = "Usuarios";
-            Load += FormMateria_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvMaterias).EndInit();
+            Load += FormComision_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvComisiones).EndInit();
             ResumeLayout(false);
         }
 
@@ -165,8 +177,9 @@
         private Button btEliminar;
         private Button btEditar;
         private Button btAgregar;
-        private DataGridView dgvMaterias;
+        private DataGridView dgvComisiones;
         private Label lblFilter;
         private ComboBox cmbPlan;
+        private ComboBox cmbMateria;
     }
 }

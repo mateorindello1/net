@@ -2,9 +2,8 @@ using WinFormsAcademia.FormularioEspecialidad;
 using WinFormsAcademia.FormularioMateria;
 using WinFormsAcademia.FormularioPersona;
 using WinFormsAcademia.FormularioPlan;
-using Entidades;
-using System.Windows.Forms;
-using Microsoft.VisualBasic.Logging;
+using WinFormsAcademia.FormularioComision;
+using WinFormsAcademia.FormularioCurso;
 
 namespace WinFormsAcademia
 {
@@ -47,9 +46,13 @@ namespace WinFormsAcademia
         {
             mostrarForm(new FormMateria());
         }
+        private void btnComisiones_Click(object sender, EventArgs e)
+        {
+            mostrarForm(new FormComision());
+        }
         private void btnCursos_Click(object sender, EventArgs e)
         {
-            //mostrarForm(new FormCursos());
+            mostrarForm(new FormCurso());
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -95,6 +98,5 @@ namespace WinFormsAcademia
         {
 
         }
-
     }
 }
