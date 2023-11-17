@@ -16,6 +16,9 @@
     <Compile Update="FormularioComision\FormComision.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormularioCurso\AgregarDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormularioMateria\FormMateria.cs">
       <SubType>Form</SubType>
     </Compile>

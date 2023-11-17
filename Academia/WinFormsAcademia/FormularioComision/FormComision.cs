@@ -67,12 +67,14 @@ namespace WinFormsAcademia.FormularioComision
         {
             if (dgvComisiones.SelectedRows.Count > 0)
             {
-                int personaId = Int32.Parse(dgvComisiones.SelectedRows[0].Cells["IdComision"].Value.ToString());
                 DialogResult result = MessageBox.Show("Seguro que quieres eliminar esta comision?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
                 if (result == DialogResult.Yes)
                 {
-                    await PersonaServicios.Delete(personaId);
+                    var comisionId = Int32.Parse(dgvComisiones.SelectedRows[0].Cells["IdComision"].Value.ToString());
+                    var planId = Int32.Parse(dgvComisiones.SelectedRows[0].Cells["IdPlan"].Value.ToString());
+                    var materiaId = Int32.Parse(dgvComisiones.SelectedRows[0].Cells["IdMateria"].Value.ToString());
+                    var ok = await ComisionServicios.Delete(comisionId, planId, materiaId);
+                    if (!ok) { MessageBox.Show("Error al eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
 
             }

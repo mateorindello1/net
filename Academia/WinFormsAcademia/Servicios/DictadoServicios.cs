@@ -20,9 +20,14 @@ namespace WinFormsAcademia.Servicios
             }
             else return null;
         }
-        public static async Task<List<Dictado>> Get()
+        public static async Task<List<Dictado>> Get(int? idPlanFilter = null, int? idMateriaFilter = null, int? idComisionFilter = null, int? anioFilter = null)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}");
+            string requestUri = baseUrl;
+            if (idPlanFilter is not null) requestUri += $"?idPlanFilter={idPlanFilter}";
+            if (idMateriaFilter is not null) requestUri += $"&idMateriaFilter={idMateriaFilter}";
+            if (idComisionFilter is not null) requestUri += $"&idComisionFilter={idComisionFilter}";
+            if (anioFilter is not null) requestUri += $"&anioFilter={anioFilter}";
+            var response = await httpClient.GetAsync(requestUri);
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -56,6 +61,29 @@ namespace WinFormsAcademia.Servicios
         {
             var response = await httpClient.DeleteAsync($"{baseUrl}/idComision={idComision}&idPlan{idPlan}&idMateria={idMateria}&anio={anio}&idDocente={idDocente}");
             return response.IsSuccessStatusCode;
+        }
+
+        public static async Task<List<Dictado>> GroupCreate(List<Dictado> dictados)
+        {
+            var dictadosJson = JsonConvert.SerializeObject(dictados);
+            var content = new StringContent(dictadosJson, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync($"{baseUrl}/GroupCreate", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var addedDictados = JsonConvert.DeserializeObject<List<Dictado>>(responseContent);
+                return addedDictados;
+            }
+            else return null;
+        }
+
+        public static async Task GroupDelete(List<Dictado> dictados)
+        {
+            foreach (var dictado in dictados)
+            {
+                var ok = await Delete(dictado.IdComision,dictado.IdPlan,dictado.IdMateria,dictado.Anio,dictado.IdDocente);
+            }
         }
     }
 }

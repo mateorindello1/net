@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApiAcademia.Context;
 using Entidades;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace WebApiAcademia.Controllers
 {
@@ -23,13 +24,16 @@ namespace WebApiAcademia.Controllers
 
         // GET: api/Dictados
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Dictado>>> GetDictados()
+        public async Task<ActionResult<IEnumerable<Dictado>>> GetDictados(int? idPlanFilter = null, int? idMateriaFilter = null, int? idComisionFilter = null, int? anioFilter = null)
         {
-            if (_context.Dictados == null)
-            {
-                return NotFound();
-            }
-            return await _context.Dictados.ToListAsync();
+            IQueryable<Dictado> query = _context.Dictados;
+            query = query.Include(d => d.IdDocenteNavigation);
+            if (query == null) return NotFound();
+            if (idPlanFilter is not null) query = query.Where(dictado => dictado.IdPlan == idPlanFilter);
+            if (idMateriaFilter is not null) query = query.Where(dictado => dictado.IdMateria == idMateriaFilter);
+            if (idComisionFilter is not null) query = query.Where(dictado => dictado.IdComision == idComisionFilter);
+            if (anioFilter is not null) query = query.Where(dictado => dictado.Anio == anioFilter);
+            return await query.ToListAsync();
         }
 
         // GET: api/Dictados/5
@@ -40,6 +44,7 @@ namespace WebApiAcademia.Controllers
             {
                 return NotFound();
             }
+            _context.Dictados.Include(d => d.IdDocenteNavigation);
             var dictado = await _context.Dictados
                 .Where(c => c.IdComision == idComision && 
                             c.IdPlan == idPlan && 
@@ -141,6 +146,28 @@ namespace WebApiAcademia.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+        [HttpPost("GroupCreate")]
+        public async Task<ActionResult<IEnumerable<Dictado>>> PostDictados(IEnumerable<Dictado> dictados)
+        {
+            if (_context.Dictados == null)
+            {
+                return Problem("Entity set 'AcademiaContext.Dictados' is null.");
+            }
+
+            _context.Dictados.AddRange(dictados);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                // Puedes manejar conflictos o excepciones específicas aquí si es necesario
+                return Conflict();
+            }
+
+            return CreatedAtAction("GetDictados", dictados);
         }
 
         private bool DictadoExists(int idComision, int idPlan, int idMateria, int anio, int idDocente)

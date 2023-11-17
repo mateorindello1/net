@@ -41,8 +41,13 @@ namespace WinFormsAcademia.FormularioPlan
         private async void CargarEspecialidades()
         {
             var especialidades = await EspecialidadServicios.Get();
-            cmbEspecialidades.DataSource = especialidades;
-            cmbEspecialidades.DisplayMember = "Descripcion";
+            var displayList = especialidades.Select(especialidad => new
+            {
+                DisplayText = $"ID: {especialidad.IdEspecialidad} - {especialidad.Descripcion}",
+                especialidad.IdEspecialidad
+            }).ToList();
+            cmbEspecialidades.DataSource = displayList;
+            cmbEspecialidades.DisplayMember = "DisplayText";
             cmbEspecialidades.ValueMember = "IdEspecialidad";
             if (cmbEspecialidades.Items.Count > 0) { cmbEspecialidades.SelectedIndex = 0; } else { cmbEspecialidades.Enabled = false; }
         }

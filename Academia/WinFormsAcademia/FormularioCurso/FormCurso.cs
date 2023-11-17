@@ -68,12 +68,17 @@ namespace WinFormsAcademia.FormularioCurso
         {
             if (dgvCursos.SelectedRows.Count > 0)
             {
-                int personaId = Int32.Parse(dgvCursos.SelectedRows[0].Cells["IdCurso"].Value.ToString());
-                DialogResult result = MessageBox.Show("Seguro que quieres eliminar esta curso?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Seguro que quieres eliminar este curso?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
-                    await PersonaServicios.Delete(personaId);
+                    var comisionId = Int32.Parse(dgvCursos.SelectedRows[0].Cells["IdComision"].Value.ToString());
+                    var planId = Int32.Parse(dgvCursos.SelectedRows[0].Cells["IdPlan"].Value.ToString());
+                    var materiaId = Int32.Parse(dgvCursos.SelectedRows[0].Cells["IdMateria"].Value.ToString());
+                    var anio = Int32.Parse(dgvCursos.SelectedRows[0].Cells["Anio"].Value.ToString());
+                    var editCurso = await CursoServicios.GetOne(comisionId, planId, materiaId, anio);
+                    var ok = await CursoServicios.Delete(comisionId, planId, materiaId, anio);
+                    if (!ok) { MessageBox.Show("Error al eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
 
             }

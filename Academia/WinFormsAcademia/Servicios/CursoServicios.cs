@@ -9,9 +9,11 @@ namespace WinFormsAcademia.Servicios
     {
         private static readonly string baseUrl = "https://localhost:7035/api/Cursos";
         private static HttpClient httpClient = new HttpClient();
-        public static async Task<Curso> GetOne(int idComision, int idPlan, int idMateria, int anio)
+        public static async Task<Curso> GetOne(int idComision, int idPlan, int idMateria, int anio, bool? incluirDictados = false)
         {
-            var response = await httpClient.GetAsync($"{baseUrl}/idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}");
+            string requestUri = $"{baseUrl}/idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}";
+            if ((bool)incluirDictados) requestUri += $"&incluirDictados{incluirDictados}";
+            var response = await httpClient.GetAsync(requestUri);
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -56,10 +58,9 @@ namespace WinFormsAcademia.Servicios
             var response = await httpClient.PutAsync($"{baseUrl}/idComision={curso.IdComision}&idPlan={curso.IdPlan}&idMateria={curso.IdMateria}&anio={curso.Anio}", content);
             return response.IsSuccessStatusCode;
         }
-        public static async Task<Boolean> Delete(Curso curso)
+        public static async Task<Boolean> Delete(int idComision, int idPlan, int idMateria, int anio)
         {
-            var cursoJson = JsonConvert.SerializeObject(curso);
-            var response = await httpClient.DeleteAsync($"{baseUrl}/idComision={curso.IdComision}&idPlan={curso.IdPlan}&idMateria={curso.IdMateria}&anio={curso.Anio}");
+            var response = await httpClient.DeleteAsync($"{baseUrl}/idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}");
             return response.IsSuccessStatusCode;
         }
     }

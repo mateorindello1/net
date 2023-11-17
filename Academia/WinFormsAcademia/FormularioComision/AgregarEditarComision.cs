@@ -46,9 +46,14 @@ namespace WinFormsAcademia.FormularioComision
         {
             // Obtiene los planes de la base de datos
             var planes = await PlanServicios.Get();
+            var displayList = planes.Select(plan => new
+            {
+                DisplayText = $"ID: {plan.IdPlan} - {plan.Descripcion}",
+                plan.IdPlan
+            }).ToList();
             // Enlaza la lista de planes al ComboBox
-            cmbPlan.DataSource = planes;
-            cmbPlan.DisplayMember = "Descripcion"; // Establece la propiedad que se mostrará en el ComboBox
+            cmbPlan.DataSource = displayList;
+            cmbPlan.DisplayMember = "DisplayText"; // Establece la propiedad que se mostrará en el ComboBox
             cmbPlan.ValueMember = "IdPlan"; // Establece la propiedad que se utilizará como valor seleccionado
             if (cmbPlan.Items.Count > 0) { cmbPlan.SelectedIndex = 0; } else { cmbPlan.Enabled = false; }
             if (editMode) { cmbPlan.SelectedValue = comisionAEditar.IdPlan; }
@@ -60,11 +65,16 @@ namespace WinFormsAcademia.FormularioComision
             // Obtiene las especialidades de la base de datos
             int.TryParse(cmbPlan.SelectedValue.ToString(), out int selectedPlan);
             var materias = await MateriaServicios.Get(selectedPlan);
+            var displayList = materias.Select(materia => new
+            {
+                DisplayText = $"{materia.IdMateria} - {materia.Nombre}",
+                materia.IdMateria
+            }).ToList();
             // Enlaza la lista de especialidades al ComboBox
-            cmbMateria.DataSource = materias;
-            cmbMateria.DisplayMember = "Nombre"; // Establece la propiedad que se mostrará en el ComboBox
+            cmbMateria.DataSource = displayList;
+            cmbMateria.DisplayMember = "DisplayText"; // Establece la propiedad que se mostrará en el ComboBox
             cmbMateria.ValueMember = "IdMateria"; // Establece la propiedad que se utilizará como valor seleccionado
-            if (cmbMateria.Items.Count > 0) { cmbMateria.SelectedIndex = 0; cmbMateria.Enabled = true; } else { cmbMateria.Enabled = false; }
+            if (cmbMateria.Items.Count > 0) { cmbMateria.SelectedIndex = 0; } else { cmbMateria.Enabled = false; }
             if (editMode) { cmbMateria.SelectedValue = comisionAEditar.IdMateria; }
         }
 

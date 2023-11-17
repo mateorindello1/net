@@ -17,9 +17,9 @@ public partial class Curso
 
     public int Cupo { get; set; }
 
-    public virtual ICollection<Dictado>? Dictados { get; set; } = null;
+    public virtual ICollection<Dictado>? Dictados { get; set; } = new List<Dictado>();
 
     public virtual Comision? Id { get; set; } = null;
 
-    public virtual ICollection<Inscripcion>? Inscripciones { get; set; } = null;
+    public virtual ICollection<Inscripcion>? Inscripciones { get; set; } = new List<Inscripcion>();
 }

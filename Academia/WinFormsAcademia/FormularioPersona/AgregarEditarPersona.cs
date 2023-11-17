@@ -53,9 +53,14 @@ namespace WinFormsAcademia.FormularioPersona
         {
             // Obtiene las especialidades de la base de datos
             var planes = await PlanServicios.Get();
+            var displayList = planes.Select(plan => new
+            {
+                DisplayText = $"ID: {plan.IdPlan} - {plan.Descripcion}",
+                plan.IdPlan
+            }).ToList();
             // Enlaza la lista de especialidades al ComboBox
-            cmbPlan.DataSource = planes;
-            cmbPlan.DisplayMember = "Descripcion"; // Establece la propiedad que se mostrará en el ComboBox
+            cmbPlan.DataSource = displayList;
+            cmbPlan.DisplayMember = "DisplayText"; // Establece la propiedad que se mostrará en el ComboBox
             cmbPlan.ValueMember = "IdPlan"; // Establece la propiedad que se utilizará como valor seleccionado
             if (cmbPlan.Items.Count > 0) { cmbPlan.SelectedIndex = 0; } else { cmbPlan.Enabled = false; }
         }

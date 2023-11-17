@@ -47,12 +47,13 @@ namespace WebApiAcademia.Controllers
 
         // GET: api/Cursos/5
         [HttpGet("idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}")]
-        public async Task<ActionResult<Curso>> GetCurso(int idComision, int idPlan, int idMateria, int anio)
+        public async Task<ActionResult<Curso>> GetCurso(int idComision, int idPlan, int idMateria, int anio,bool? incluirDictados = false)
         {
           if (_context.Cursos == null)
           {
               return NotFound();
           }
+            if ((bool)incluirDictados) _context.Cursos.Include(curso => curso.Dictados);
             var curso = await _context.Cursos
                 .Where(c => c.IdComision == idComision && c.IdPlan == idPlan && c.IdMateria == idMateria && c.Anio == anio)
                 .FirstOrDefaultAsync();
