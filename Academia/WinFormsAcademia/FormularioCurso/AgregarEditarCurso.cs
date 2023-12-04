@@ -224,7 +224,7 @@ namespace WinFormsAcademia.FormularioCurso
         private async void AgregarEditarCurso_Load(object sender, EventArgs e)
         {
             if (editMode) Rellenar();
-            if (!editMode) CargarPlanes();
+            if (!editMode) await CargarPlanes();
         }
         private async void cargarDocentes()
         {

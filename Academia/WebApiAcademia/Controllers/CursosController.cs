@@ -146,6 +146,21 @@ namespace WebApiAcademia.Controllers
             return NoContent();
         }
 
+        // GET: api/Cursos
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Curso>>> GetCursosByDocente(int legajo)
+        {
+            IQueryable<Curso> query = _context.Cursos;
+            query = query.Include(curso => curso.Dictados);
+            query = query.Where(curso => curso.Dictados.Any(d => d.IdDocente == legajo));
+            var cursos = await query.ToListAsync();
+            if (cursos == null || cursos.Count == 0)
+            {
+                return NotFound();
+            }
+            return cursos;
+        }
+
         private bool CursoExists(int idComision, int idPlan, int idMateria, int anio)
         {
             return _context.Cursos.Any(c => c.IdComision == idComision && c.IdPlan == idPlan && c.IdMateria == idMateria && c.Anio == anio);
