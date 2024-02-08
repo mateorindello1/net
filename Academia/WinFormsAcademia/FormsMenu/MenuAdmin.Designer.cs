@@ -47,6 +47,7 @@
             btnCerrarSesion = new Button();
             btnExit = new Button();
             groupBox4 = new GroupBox();
+            lblBienvenido = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // btnAdmin
             // 
+            btnAdmin.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnAdmin.Location = new Point(10, 47);
             btnAdmin.Name = "btnAdmin";
             btnAdmin.Size = new Size(189, 44);
@@ -100,6 +102,7 @@
             groupBox1.Controls.Add(btnMaterias);
             groupBox1.Controls.Add(btnEspecialidades);
             groupBox1.Controls.Add(btnPlanes);
+            groupBox1.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.Location = new Point(258, 72);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(210, 312);
@@ -139,6 +142,7 @@
             // 
             // btnTodos
             // 
+            btnTodos.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnTodos.Location = new Point(10, 235);
             btnTodos.Name = "btnTodos";
             btnTodos.Size = new Size(189, 44);
@@ -149,6 +153,7 @@
             // 
             // btnDocentes
             // 
+            btnDocentes.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnDocentes.Location = new Point(10, 172);
             btnDocentes.Name = "btnDocentes";
             btnDocentes.Size = new Size(189, 44);
@@ -159,6 +164,7 @@
             // 
             // btnAlumnos
             // 
+            btnAlumnos.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnAlumnos.Location = new Point(10, 110);
             btnAlumnos.Name = "btnAlumnos";
             btnAlumnos.Size = new Size(189, 44);
@@ -179,6 +185,7 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(btnInscripcionMaterias);
+            groupBox2.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox2.Location = new Point(487, 272);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(212, 112);
@@ -199,6 +206,7 @@
             // 
             groupBox3.Controls.Add(btnReporteCursos);
             groupBox3.Controls.Add(btnRegistroNotas);
+            groupBox3.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox3.Location = new Point(487, 72);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(212, 184);
@@ -217,9 +225,10 @@
             // 
             // btnCerrarSesion
             // 
-            btnCerrarSesion.Location = new Point(263, 407);
+            btnCerrarSesion.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCerrarSesion.Location = new Point(243, 429);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(96, 23);
+            btnCerrarSesion.Size = new Size(118, 26);
             btnCerrarSesion.TabIndex = 7;
             btnCerrarSesion.Text = "Cerrar Sesión";
             btnCerrarSesion.UseVisualStyleBackColor = true;
@@ -228,9 +237,10 @@
             // btnExit
             // 
             btnExit.DialogResult = DialogResult.Abort;
-            btnExit.Location = new Point(367, 407);
+            btnExit.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnExit.Location = new Point(367, 429);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(96, 23);
+            btnExit.Size = new Size(118, 26);
             btnExit.TabIndex = 8;
             btnExit.Text = "Salir";
             btnExit.UseVisualStyleBackColor = true;
@@ -242,6 +252,7 @@
             groupBox4.Controls.Add(btnAdmin);
             groupBox4.Controls.Add(btnTodos);
             groupBox4.Controls.Add(btnAlumnos);
+            groupBox4.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox4.Location = new Point(28, 72);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(210, 312);
@@ -249,12 +260,24 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Usuarios";
             // 
+            // lblBienvenido
+            // 
+            lblBienvenido.BorderStyle = BorderStyle.Fixed3D;
+            lblBienvenido.Font = new Font("Bahnschrift Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBienvenido.Location = new Point(28, 399);
+            lblBienvenido.Name = "lblBienvenido";
+            lblBienvenido.Size = new Size(671, 23);
+            lblBienvenido.TabIndex = 10;
+            lblBienvenido.Text = "Bienvenido, nombre y apellido";
+            lblBienvenido.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // MenuAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnExit;
-            ClientSize = new Size(727, 457);
+            ClientSize = new Size(727, 470);
+            Controls.Add(lblBienvenido);
             Controls.Add(groupBox4);
             Controls.Add(btnExit);
             Controls.Add(btnCerrarSesion);
@@ -296,5 +319,6 @@
         private Button btnTodos;
         private Button btnCursos;
         private GroupBox groupBox4;
+        private Label lblBienvenido;
     }
 }

@@ -26,8 +26,9 @@ namespace WinFormsAcademia
             {
                 lblError.Visible = true;
                 lblIngresando.Visible = false;
-                btnOK.Enabled = true;
+                btnOK.Enabled = false;
                 btnOK.Visible = true;
+                txtPassword.Text = string.Empty;
             }
         }
 
@@ -87,7 +88,7 @@ namespace WinFormsAcademia
                     case 1:
                         form = new MenuDocente(persona); break;
                     case 2:
-                        form = new MenuAdmin(); break;
+                        form = new MenuAdmin(persona); break;
                     default:
                         Application.Exit(); break;
 

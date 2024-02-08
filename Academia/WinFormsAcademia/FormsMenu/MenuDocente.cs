@@ -14,6 +14,7 @@ namespace WinFormsAcademia
         {
             InitializeComponent();
             this.docente = persona;
+            this.lblBienvenido.Text = $"Bienvenido, {persona.Nombre} {persona.Apellido}";
         }
 
         private void button8_Click(object sender, EventArgs e)

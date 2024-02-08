@@ -46,7 +46,7 @@
             // lblTitle
             // 
             lblTitle.Font = new Font("Bahnschrift", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTitle.Location = new Point(12, 128);
+            lblTitle.Location = new Point(12, 126);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(703, 56);
             lblTitle.TabIndex = 0;
@@ -56,11 +56,12 @@
             // txtUsuario
             // 
             txtUsuario.Cursor = Cursors.IBeam;
-            txtUsuario.Location = new Point(295, 229);
+            txtUsuario.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuario.Location = new Point(271, 211);
             txtUsuario.MaxLength = 20;
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Usuario";
-            txtUsuario.Size = new Size(167, 23);
+            txtUsuario.Size = new Size(197, 26);
             txtUsuario.TabIndex = 1;
             txtUsuario.Enter += txtUsuarioPassword_Enter;
             txtUsuario.KeyPress += txt_KeyPress;
@@ -70,7 +71,7 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.round_account_button_with_user_inside_icon_icons_com_72596;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(266, 229);
+            pictureBox1.Location = new Point(242, 213);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(23, 23);
             pictureBox1.TabIndex = 2;
@@ -79,11 +80,12 @@
             // txtPassword
             // 
             txtPassword.Cursor = Cursors.IBeam;
-            txtPassword.Location = new Point(295, 271);
+            txtPassword.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPassword.Location = new Point(271, 253);
             txtPassword.MaxLength = 20;
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Contraseña";
-            txtPassword.Size = new Size(167, 23);
+            txtPassword.Size = new Size(197, 26);
             txtPassword.TabIndex = 3;
             txtPassword.UseSystemPasswordChar = true;
             txtPassword.Enter += txtUsuarioPassword_Enter;
@@ -94,7 +96,7 @@
             // 
             pictureBox2.BackgroundImage = Properties.Resources.password_3715;
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(266, 271);
+            pictureBox2.Location = new Point(242, 255);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(23, 23);
             pictureBox2.TabIndex = 4;
@@ -102,9 +104,10 @@
             // 
             // btnOK
             // 
+            btnOK.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnOK.Location = new Point(266, 352);
             btnOK.Name = "btnOK";
-            btnOK.Size = new Size(196, 23);
+            btnOK.Size = new Size(196, 33);
             btnOK.TabIndex = 5;
             btnOK.Text = "Ingresar";
             btnOK.UseVisualStyleBackColor = true;
@@ -113,9 +116,10 @@
             // chkShowPw
             // 
             chkShowPw.AutoSize = true;
-            chkShowPw.Location = new Point(468, 273);
+            chkShowPw.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            chkShowPw.Location = new Point(474, 256);
             chkShowPw.Name = "chkShowPw";
-            chkShowPw.Size = new Size(67, 19);
+            chkShowPw.Size = new Size(80, 22);
             chkShowPw.TabIndex = 6;
             chkShowPw.Text = "Mostrar";
             chkShowPw.UseVisualStyleBackColor = true;
@@ -133,8 +137,9 @@
             // 
             // lblError
             // 
+            lblError.Font = new Font("Bahnschrift", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblError.ForeColor = Color.IndianRed;
-            lblError.Location = new Point(12, 307);
+            lblError.Location = new Point(12, 303);
             lblError.Name = "lblError";
             lblError.Size = new Size(703, 23);
             lblError.TabIndex = 8;
