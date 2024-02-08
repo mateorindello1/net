@@ -103,21 +103,22 @@ namespace WebApiAcademia.Controllers
                 return Problem("Entity set 'AcademiaContext.Dictados'  is null.");
             }
             _context.Dictados.Add(dictado);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (DictadoExists(dictado.IdComision, dictado.IdPlan, dictado.IdMateria, dictado.Anio, dictado.IdDocente))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (DictadoExists(dictado.IdComision, dictado.IdPlan, dictado.IdMateria, dictado.Anio, dictado.IdDocente))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
             return CreatedAtAction("GetDictado", new { idComision = dictado.IdComision, idPlan = dictado.IdPlan, idMateria = dictado.IdMateria, anio = dictado.Anio, idDocente = dictado.IdDocente }, dictado);
         }

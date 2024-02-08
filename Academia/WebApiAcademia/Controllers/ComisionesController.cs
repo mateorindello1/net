@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApiAcademia.Context;
 using Entidades;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace WebApiAcademia.Controllers
 {
@@ -101,21 +95,22 @@ namespace WebApiAcademia.Controllers
               return Problem("Entity set 'AcademiaContext.Comisiones'  is null.");
           }
             _context.Comisiones.Add(comision);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ComisionExists(comision.IdComision,comision.IdPlan,comision.IdMateria))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (ComisionExists(comision.IdComision,comision.IdPlan,comision.IdMateria))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
             return CreatedAtAction("GetComision", new { idComision = comision.IdComision, idPlan = comision.IdPlan, idMateria = comision.IdMateria }, comision);
         }

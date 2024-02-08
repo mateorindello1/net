@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApiAcademia.Context;
 using Entidades;
@@ -47,13 +42,13 @@ namespace WebApiAcademia.Controllers
 
         // GET: api/Cursos/5
         [HttpGet("idComision={idComision}&idPlan={idPlan}&idMateria={idMateria}&anio={anio}")]
-        public async Task<ActionResult<Curso>> GetCurso(int idComision, int idPlan, int idMateria, int anio,bool? incluirDictados = false)
+        public async Task<ActionResult<Curso>> GetCurso(int idComision, int idPlan, int idMateria, int anio)
         {
           if (_context.Cursos == null)
           {
               return NotFound();
           }
-            if ((bool)incluirDictados) _context.Cursos.Include(curso => curso.Dictados);
+            _context.Cursos.Include(curso => curso.Dictados);
             var curso = await _context.Cursos
                 .Where(c => c.IdComision == idComision && c.IdPlan == idPlan && c.IdMateria == idMateria && c.Anio == anio)
                 .FirstOrDefaultAsync();
@@ -105,21 +100,22 @@ namespace WebApiAcademia.Controllers
               return Problem("Entity set 'AcademiaContext.Cursos'  is null.");
           }
             _context.Cursos.Add(curso);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (CursoExists(curso.IdComision, curso.IdPlan, curso.IdMateria, curso.Anio))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (CursoExists(curso.IdComision, curso.IdPlan, curso.IdMateria, curso.Anio))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
             return CreatedAtAction("GetCurso", new { idComision = curso.IdComision, idPlan = curso.IdPlan, idMateria = curso.IdMateria, anio = curso.Anio }, curso);
         }
@@ -147,12 +143,12 @@ namespace WebApiAcademia.Controllers
         }
 
         // GET: api/Cursos
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Curso>>> GetCursosByDocente(int legajo)
+        [HttpGet("legajoDocente={legajoDocente}")]
+        public async Task<ActionResult<IEnumerable<Curso>>> GetCursosByDocente(int legajoDocente)
         {
             IQueryable<Curso> query = _context.Cursos;
             query = query.Include(curso => curso.Dictados);
-            query = query.Where(curso => curso.Dictados.Any(d => d.IdDocente == legajo));
+            query = query.Where(curso => curso.Dictados.Any(d => d.IdDocente == legajoDocente));
             var cursos = await query.ToListAsync();
             if (cursos == null || cursos.Count == 0)
             {

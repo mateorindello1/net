@@ -95,21 +95,22 @@ namespace WebApiAcademia.Controllers
                 return Problem("Entity set 'TuProyecto.Inscripciones' is null.");
             }
             _context.Inscripciones.Add(inscripcion);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (InscripcionExists(inscripcion.IdAlumno, inscripcion.IdComision, inscripcion.IdPlan, inscripcion.IdMateria, inscripcion.Anio))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (InscripcionExists(inscripcion.IdAlumno, inscripcion.IdComision, inscripcion.IdPlan, inscripcion.IdMateria, inscripcion.Anio))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
             return CreatedAtAction("GetInscripcion", new { idAlumno = inscripcion.IdAlumno, idComision = inscripcion.IdComision, idPlan = inscripcion.IdPlan, idMateria = inscripcion.IdMateria, anio = inscripcion.Anio }, inscripcion);
         }

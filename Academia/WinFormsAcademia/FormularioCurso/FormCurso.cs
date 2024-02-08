@@ -25,9 +25,6 @@ namespace WinFormsAcademia.FormularioCurso
                 else dgvCursos.DataSource = await CursoServicios.Get(selectedPlan);
             }
             else dgvCursos.DataSource = await CursoServicios.Get();
-            dgvCursos.Columns["Dictados"].Visible = false;
-            dgvCursos.Columns["Id"].Visible = false;
-            dgvCursos.Columns["Inscripciones"].Visible = false;
             if (dgvCursos.Rows.Count == 0)
             {
                 btEliminar.Enabled = false;
@@ -37,6 +34,9 @@ namespace WinFormsAcademia.FormularioCurso
             {
                 btEliminar.Enabled = true;
                 btEditar.Enabled = true;
+                dgvCursos.Columns["Dictados"].Visible = false;
+                dgvCursos.Columns["Id"].Visible = false;
+                dgvCursos.Columns["Inscripciones"].Visible = false;
             }
         }
 
