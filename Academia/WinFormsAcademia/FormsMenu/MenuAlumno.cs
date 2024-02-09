@@ -73,5 +73,10 @@ namespace WinFormsAcademia
             MostrarInscripciones mostrarInscripcionesForm = new MostrarInscripciones(this.alumno);
             mostrarInscripcionesForm.Show();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

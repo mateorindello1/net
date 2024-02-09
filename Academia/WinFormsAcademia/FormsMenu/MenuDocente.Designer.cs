@@ -78,7 +78,7 @@
             btnCursos.Name = "btnCursos";
             btnCursos.Size = new Size(200, 44);
             btnCursos.TabIndex = 1;
-            btnCursos.Text = "Mis inscripciones";
+            btnCursos.Text = "Mis cursos";
             btnCursos.UseVisualStyleBackColor = true;
             btnCursos.Click += btnCursos_Click;
             // 

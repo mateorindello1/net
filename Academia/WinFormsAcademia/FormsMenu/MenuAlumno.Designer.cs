@@ -30,12 +30,12 @@
         {
             lblTitle = new Label();
             groupBox2 = new GroupBox();
+            btnMostrarInscripciones = new Button();
             btnNotas = new Button();
             btnInscribirse = new Button();
             button3 = new Button();
-            button8 = new Button();
+            btnExit = new Button();
             lblBienvenido = new Label();
-            btnMostrarInscripciones = new Button();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,6 +59,17 @@
             groupBox2.Size = new Size(703, 312);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
+            // 
+            // btnMostrarInscripciones
+            // 
+            btnMostrarInscripciones.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMostrarInscripciones.Location = new Point(254, 129);
+            btnMostrarInscripciones.Name = "btnMostrarInscripciones";
+            btnMostrarInscripciones.Size = new Size(200, 44);
+            btnMostrarInscripciones.TabIndex = 4;
+            btnMostrarInscripciones.Text = "Mis inscripciones";
+            btnMostrarInscripciones.UseVisualStyleBackColor = true;
+            btnMostrarInscripciones.Click += btnMostrarInscripciones_Click;
             // 
             // btnNotas
             // 
@@ -93,15 +104,17 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
-            // button8
+            // btnExit
             // 
-            button8.DialogResult = DialogResult.Abort;
-            button8.FlatAppearance.BorderColor = Color.Black;
-            button8.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button8.Location = new Point(367, 429);
-            button8.Name = "button8";
-            button8.Size = new Size(118, 26);
-            button8.TabIndex = 8;
+            btnExit.DialogResult = DialogResult.Abort;
+            btnExit.FlatAppearance.BorderColor = Color.Black;
+            btnExit.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnExit.Location = new Point(367, 429);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(118, 26);
+            btnExit.TabIndex = 8;
+            btnExit.Text = "Salir";
+            btnExit.Click += btnExit_Click;
             // 
             // lblBienvenido
             // 
@@ -114,25 +127,14 @@
             lblBienvenido.Text = "Bienvenido, nombre y apellido";
             lblBienvenido.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // btnMostrarInscripciones
-            // 
-            btnMostrarInscripciones.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnMostrarInscripciones.Location = new Point(254, 129);
-            btnMostrarInscripciones.Name = "btnMostrarInscripciones";
-            btnMostrarInscripciones.Size = new Size(200, 44);
-            btnMostrarInscripciones.TabIndex = 4;
-            btnMostrarInscripciones.Text = "Mis inscripciones";
-            btnMostrarInscripciones.UseVisualStyleBackColor = true;
-            btnMostrarInscripciones.Click += btnMostrarInscripciones_Click;
-            // 
             // MenuAlumno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = button8;
+            CancelButton = btnExit;
             ClientSize = new Size(727, 470);
             Controls.Add(lblBienvenido);
-            Controls.Add(button8);
+            Controls.Add(btnExit);
             Controls.Add(button3);
             Controls.Add(groupBox2);
             Controls.Add(lblTitle);
@@ -151,7 +153,7 @@
         private GroupBox groupBox2;
         private Button btnInscribirse;
         private Button button3;
-        private Button button8;
+        private Button btnExit;
         private Button btnNotas;
         private Label lblBienvenido;
         private Button btnMostrarInscripciones;

@@ -31,8 +31,6 @@
             button2 = new Button();
             label1 = new Label();
             dgvCursos = new DataGridView();
-            btnReporte = new Button();
-            btnCargarNotas = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCursos).BeginInit();
             SuspendLayout();
             // 
@@ -69,28 +67,8 @@
             dgvCursos.ReadOnly = true;
             dgvCursos.RowTemplate.Height = 25;
             dgvCursos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCursos.Size = new Size(530, 308);
+            dgvCursos.Size = new Size(707, 308);
             dgvCursos.TabIndex = 8;
-            // 
-            // btnReporte
-            // 
-            btnReporte.Location = new Point(639, 149);
-            btnReporte.Name = "btnReporte";
-            btnReporte.Size = new Size(119, 36);
-            btnReporte.TabIndex = 16;
-            btnReporte.Text = "Reporte";
-            btnReporte.UseVisualStyleBackColor = true;
-            btnReporte.Click += btnReporte_Click;
-            // 
-            // btnCargarNotas
-            // 
-            btnCargarNotas.Location = new Point(639, 221);
-            btnCargarNotas.Name = "btnCargarNotas";
-            btnCargarNotas.Size = new Size(119, 36);
-            btnCargarNotas.TabIndex = 17;
-            btnCargarNotas.Text = "Cargar notas";
-            btnCargarNotas.UseVisualStyleBackColor = true;
-            btnCargarNotas.Click += btnCargarNotas_Click;
             // 
             // FormCursosDocente
             // 
@@ -98,8 +76,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = button2;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnCargarNotas);
-            Controls.Add(btnReporte);
             Controls.Add(button2);
             Controls.Add(label1);
             Controls.Add(dgvCursos);
@@ -119,7 +95,5 @@
         private Button button2;
         private Label label1;
         private DataGridView dgvCursos;
-        private Button btnReporte;
-        private Button btnCargarNotas;
     }
 }
