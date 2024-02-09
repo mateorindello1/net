@@ -30,11 +30,11 @@
         {
             lblTitle = new Label();
             groupBox2 = new GroupBox();
+            btnNotas = new Button();
+            btnCursos = new Button();
             btnInscribirse = new Button();
             button3 = new Button();
             button8 = new Button();
-            btnCursos = new Button();
-            btnNotas = new Button();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,13 +59,33 @@
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             // 
+            // btnNotas
+            // 
+            btnNotas.Location = new Point(251, 201);
+            btnNotas.Name = "btnNotas";
+            btnNotas.Size = new Size(200, 44);
+            btnNotas.TabIndex = 2;
+            btnNotas.Text = "Mis notas";
+            btnNotas.UseVisualStyleBackColor = true;
+            btnNotas.Click += btnNotas_Click;
+            // 
+            // btnCursos
+            // 
+            btnCursos.Location = new Point(251, 129);
+            btnCursos.Name = "btnCursos";
+            btnCursos.Size = new Size(200, 44);
+            btnCursos.TabIndex = 1;
+            btnCursos.Text = "Mis inscripciones";
+            btnCursos.UseVisualStyleBackColor = true;
+            btnCursos.Click += btnCursos_Click;
+            // 
             // btnInscribirse
             // 
             btnInscribirse.Location = new Point(251, 59);
             btnInscribirse.Name = "btnInscribirse";
             btnInscribirse.Size = new Size(200, 44);
             btnInscribirse.TabIndex = 0;
-            btnInscribirse.Text = "Inscripción a materias";
+            btnInscribirse.Text = "Inscripción a cursos";
             btnInscribirse.UseVisualStyleBackColor = true;
             btnInscribirse.Click += btnInscribirse_Click;
             // 
@@ -90,26 +110,6 @@
             button8.Text = "Salir";
             button8.UseVisualStyleBackColor = true;
             button8.Click += button8_Click;
-            // 
-            // btnCursos
-            // 
-            btnCursos.Location = new Point(251, 129);
-            btnCursos.Name = "btnCursos";
-            btnCursos.Size = new Size(200, 44);
-            btnCursos.TabIndex = 1;
-            btnCursos.Text = "Mis inscripciones";
-            btnCursos.UseVisualStyleBackColor = true;
-            btnCursos.Click += btnCursos_Click;
-            // 
-            // btnNotas
-            // 
-            btnNotas.Location = new Point(251, 201);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(200, 44);
-            btnNotas.TabIndex = 2;
-            btnNotas.Text = "Mis notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            btnNotas.Click += btnNotas_Click;
             // 
             // MenuAlumno
             // 

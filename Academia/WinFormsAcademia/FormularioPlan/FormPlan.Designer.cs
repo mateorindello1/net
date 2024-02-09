@@ -60,6 +60,7 @@
             label1.TabIndex = 13;
             label1.Text = "Planes";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Click += label1_Click;
             // 
             // btEliminar
             // 

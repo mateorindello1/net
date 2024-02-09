@@ -4,6 +4,8 @@ using WinFormsAcademia.FormularioPersona;
 using WinFormsAcademia.FormularioPlan;
 using Entidades;
 using System.Windows.Forms;
+using WinFormsAcademia.FormsMenu;
+using WinFormsAcademia.Servicios;
 
 namespace WinFormsAcademia
 {
@@ -45,7 +47,8 @@ namespace WinFormsAcademia
 
         private void btnInscribirse_Click(object sender, EventArgs e)
         {
-
+            InscripcionCursoAlumno inscripcionForm = new InscripcionCursoAlumno(this.alumno);
+            inscripcionForm.Show();
         }
 
         private void btnCursos_Click(object sender, EventArgs e)

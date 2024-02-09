@@ -179,7 +179,7 @@ namespace WinFormsAcademia.FormularioCurso
                 if (editMode)
                 {
                     var ok = await CursoServicios.Update(nuevoCurso);
-                    if (ok) 
+                    if (ok)
                     {
                         await DictadoServicios.GroupDelete(dictadosIniciales);
                         var okCreate = await DictadoServicios.GroupCreate(nuevoCurso.Dictados.ToList());
@@ -263,7 +263,7 @@ namespace WinFormsAcademia.FormularioCurso
                             apellido = form.docenteAGuardar.Apellido,
                             cargo = form.cargo,
                         });
-                dgvDocentes.DataSource =docentesCargos;
+                dgvDocentes.DataSource = docentesCargos;
             }
             form.Dispose();
         }

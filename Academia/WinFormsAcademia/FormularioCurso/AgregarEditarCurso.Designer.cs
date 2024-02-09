@@ -143,7 +143,6 @@
             // nudCupo
             // 
             nudCupo.Location = new Point(82, 82);
-            nudCupo.Minimum = new decimal(new int[] { 20, 0, 0, 0 });
             nudCupo.Name = "nudCupo";
             nudCupo.Size = new Size(78, 23);
             nudCupo.TabIndex = 4;
