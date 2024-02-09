@@ -4,6 +4,7 @@ using WinFormsAcademia.FormularioPersona;
 using WinFormsAcademia.FormularioPlan;
 using WinFormsAcademia.FormularioComision;
 using WinFormsAcademia.FormularioCurso;
+using Entidades;
 
 namespace WinFormsAcademia
 {
@@ -12,9 +13,12 @@ namespace WinFormsAcademia
         private const int alumno = 0;
         private const int docente = 1;
         private const int admin = 2;
-        public MenuAdmin()
+        private Persona administrador;
+        public MenuAdmin(Persona persona)
         {
             InitializeComponent();
+            this.administrador = persona;
+            this.lblBienvenido.Text = $"Bienvenido, {persona.Nombre} {persona.Apellido}";
         }
         //USUARIOS
         private void btnTodos_Click(object sender, EventArgs e)
