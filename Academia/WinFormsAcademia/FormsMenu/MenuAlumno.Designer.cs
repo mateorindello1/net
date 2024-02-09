@@ -31,15 +31,11 @@
             lblTitle = new Label();
             groupBox2 = new GroupBox();
             btnNotas = new Button();
-            btnCursos = new Button();
             btnInscribirse = new Button();
             button3 = new Button();
             button8 = new Button();
             lblBienvenido = new Label();
-            btnNotas = new Button();
-            btnNotas = new Button();
-            btnNotas = new Button();
-            btnNotas = new Button();
+            btnMostrarInscripciones = new Button();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,36 +51,25 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnMostrarInscripciones);
             groupBox2.Controls.Add(btnNotas);
-            groupBox2.Controls.Add(btnCursos);
             groupBox2.Controls.Add(btnInscribirse);
             groupBox2.Location = new Point(12, 72);
             groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(703, 312);
+            groupBox2.TabIndex = 5;
+            groupBox2.TabStop = false;
+            // 
             // btnNotas
             // 
             btnNotas.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnNotas.Location = new Point(254, 201);
+            btnNotas.Location = new Point(251, 201);
             btnNotas.Name = "btnNotas";
             btnNotas.Size = new Size(200, 44);
             btnNotas.TabIndex = 2;
             btnNotas.Text = "Mis notas";
             btnNotas.UseVisualStyleBackColor = true;
             btnNotas.Click += btnNotas_Click;
-            // 
-            // btnCursos
-            // 
-            btnCursos.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCursos.Location = new Point(254, 129);
-            btnCursos.Name = "btnCursos";
-            btnCursos.Size = new Size(200, 44);
-            btnCursos.TabIndex = 1;
-            btnCursos.Text = "Mis inscripciones";
-            btnCursos.UseVisualStyleBackColor = true;
-            btnCursos.Click += btnCursos_Click;
-            // 
-            groupBox2.Size = new Size(703, 312);
-            groupBox2.TabIndex = 5;
-            // 
             // 
             // btnInscribirse
             // 
@@ -117,6 +102,7 @@
             button8.Name = "button8";
             button8.Size = new Size(118, 26);
             button8.TabIndex = 8;
+            // 
             // lblBienvenido
             // 
             lblBienvenido.BorderStyle = BorderStyle.Fixed3D;
@@ -128,81 +114,16 @@
             lblBienvenido.Text = "Bienvenido, nombre y apellido";
             lblBienvenido.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // btnMostrarInscripciones
             // 
-            btnNotas.Location = new Point(251, 201);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(200, 44);
-            btnNotas.TabIndex = 2;
-            btnNotas.Text = "Mis notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            btnNotas.Click += btnNotas_Click;
-            // 
-            // 
-            btnNotas.Location = new Point(251, 201);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(200, 44);
-            btnNotas.TabIndex = 2;
-            btnNotas.Text = "Mis notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            btnNotas.Click += btnNotas_Click;
-            // 
-            // 
-            btnNotas.Location = new Point(251, 201);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(200, 44);
-            btnNotas.TabIndex = 2;
-            btnNotas.Text = "Mis notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            btnNotas.Click += btnNotas_Click;
-            // 
-            // 
-            btnNotas.Location = new Point(251, 201);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(200, 44);
-            btnNotas.TabIndex = 2;
-            btnNotas.Text = "Mis notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            btnNotas.Click += btnNotas_Click;
-            // 
-            // btnNotas
-            // 
-            btnNotas.Location = new Point(251, 201);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(200, 44);
-            btnNotas.TabIndex = 2;
-            btnNotas.Text = "Mis notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            btnNotas.Click += btnNotas_Click;
-            // 
-            // btnNotas
-            // 
-            btnNotas.Location = new Point(251, 201);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(200, 44);
-            btnNotas.TabIndex = 2;
-            btnNotas.Text = "Mis notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            btnNotas.Click += btnNotas_Click;
-            // 
-            // btnNotas
-            // 
-            btnNotas.Location = new Point(251, 201);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(200, 44);
-            btnNotas.TabIndex = 2;
-            btnNotas.Text = "Mis notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            btnNotas.Click += btnNotas_Click;
-            // 
-            // btnNotas
-            // 
-            btnNotas.Location = new Point(251, 201);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(200, 44);
-            btnNotas.TabIndex = 2;
-            btnNotas.Text = "Mis notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            btnNotas.Click += btnNotas_Click;
+            btnMostrarInscripciones.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMostrarInscripciones.Location = new Point(254, 129);
+            btnMostrarInscripciones.Name = "btnMostrarInscripciones";
+            btnMostrarInscripciones.Size = new Size(200, 44);
+            btnMostrarInscripciones.TabIndex = 4;
+            btnMostrarInscripciones.Text = "Mis inscripciones";
+            btnMostrarInscripciones.UseVisualStyleBackColor = true;
+            btnMostrarInscripciones.Click += btnMostrarInscripciones_Click;
             // 
             // MenuAlumno
             // 
@@ -232,7 +153,7 @@
         private Button button3;
         private Button button8;
         private Button btnNotas;
-        private Button btnCursos;
         private Label lblBienvenido;
+        private Button btnMostrarInscripciones;
     }
 }

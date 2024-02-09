@@ -30,12 +30,27 @@ namespace WinFormsAcademia.FormsMenu
 
         async private void InscripcionCursoAlumno_Load(object sender, EventArgs e)
         {
-            var cursos = await CursoServicios.Get(this.alumno.IdPlan);
+            await CargarMaterias(this.alumno.IdPlan);
+            this.List();
+        }
+
+        private async void List()
+        {
+            List<Curso> cursos;
+            if (cmbMateria.SelectedValue is not null && int.TryParse(cmbMateria.SelectedValue.ToString(), out int selectedMateria) && selectedMateria != 0)
+            {
+                if (cmbComision.SelectedValue is not null && int.TryParse(cmbComision.SelectedValue.ToString(), out int selectedComision) && selectedComision != 0)
+                {
+                    cursos = await CursoServicios.Get(this.alumno.IdPlan, selectedMateria, selectedComision);
+                }
+                else cursos = await CursoServicios.Get(this.alumno.IdPlan, selectedMateria);
+            }
+            else cursos = await CursoServicios.Get(this.alumno.IdPlan);
             var inscripciones = await InscripcionServicios.Get();
             inscripciones = inscripciones.Where(inscripcion => inscripcion.IdAlumno == this.alumno.Legajo).ToList();
             var materiasIds = inscripciones.Select(inscripcion => inscripcion.IdMateria).ToList();
 
-            cursos = cursos.Where(curso => !materiasIds.Contains(curso.IdMateria) && curso.Cupo>0).ToList();
+            cursos = cursos.Where(curso => !materiasIds.Contains(curso.IdMateria) && curso.Cupo > 0).ToList();
 
             dvgCursos.DataSource = cursos;
             dvgCursos.Columns["Dictados"].Visible = false;
@@ -77,6 +92,51 @@ namespace WinFormsAcademia.FormsMenu
                 inscripcionCorrecta.Show();
 
                 this.Close();
+            }
+        }
+
+        private async Task CargarMaterias(int idPlan)
+        {
+            var materias = new List<Materia>
+            {
+                new Materia { IdMateria = 0, Nombre = "<Todas las materias>" },
+            };
+            materias.AddRange(await MateriaServicios.Get(idPlan));
+            cmbMateria.DataSource = materias;
+            cmbMateria.DisplayMember = "Nombre";
+            cmbMateria.ValueMember = "IdMateria";
+            cmbMateria.SelectedValue = 0;
+        }
+
+        private async Task CargarComisiones(int idPlan, int idMateria)
+        {
+            var comisiones = new List<Comision>
+            {
+                new Comision { IdComision = 0, Descripcion = "<Todas las comisiones>" },
+            };
+            comisiones.AddRange(await ComisionServicios.Get(idPlan, idMateria));
+            cmbComision.DataSource = comisiones;
+            cmbComision.DisplayMember = "Descripcion";
+            cmbComision.ValueMember = "IdComision";
+            cmbComision.SelectedValue = 0;
+        }
+
+        private async void cmbMateria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMateria.SelectedValue is not null)
+            {
+                int.TryParse(cmbMateria.SelectedValue.ToString(), out int selectedMateria);
+                if (selectedMateria == 0)
+                {
+                    cmbComision.DataSource = null;
+                    cmbComision.Enabled = false;
+                }
+                else
+                {
+                    cmbComision.Enabled = true;
+                    await CargarComisiones((int)this.alumno.IdPlan, selectedMateria);
+                }
+                this.List();
             }
         }
     }

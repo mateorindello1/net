@@ -2,6 +2,7 @@ using WinFormsAcademia.FormularioEspecialidad;
 using WinFormsAcademia.FormularioMateria;
 using WinFormsAcademia.FormularioPersona;
 using WinFormsAcademia.FormularioPlan;
+using WinFormsAcademia.FormularioInscripcion;
 using Entidades;
 using System.Windows.Forms;
 using WinFormsAcademia.FormsMenu;
@@ -52,11 +53,6 @@ namespace WinFormsAcademia
             inscripcionForm.Show();
         }
 
-        private void btnCursos_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnNotas_Click(object sender, EventArgs e)
         {
 
@@ -71,6 +67,11 @@ namespace WinFormsAcademia
             );
             form.ShowDialog();
             this.Show();
+        }
+        private void btnMostrarInscripciones_Click(object sender, EventArgs e)
+        {
+            MostrarInscripciones mostrarInscripcionesForm = new MostrarInscripciones(this.alumno);
+            mostrarInscripcionesForm.Show();
         }
     }
 }
