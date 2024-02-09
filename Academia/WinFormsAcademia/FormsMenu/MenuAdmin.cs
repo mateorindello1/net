@@ -40,7 +40,7 @@ namespace WinFormsAcademia
         // ADMINISTRACION DE DATOS
         private void btnPlanes_Click(object sender, EventArgs e)
         {
-            mostrarForm(new FormPlan());
+            mostrarForm(new FormPlan(administrador));
         }
         private void btnEspecialidades_Click(object sender, EventArgs e)
         {

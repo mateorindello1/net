@@ -52,7 +52,7 @@ namespace WinFormsAcademia
         {
             List<Curso> lista = await CursoServicios.GetByDocente(docente.Legajo);
             SaveFileDialog guardar = new SaveFileDialog();
-            guardar.FileName = $"{docente.Nombre}-{docente.Apellido}_" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf";
+            guardar.FileName = $"Cursos_{docente.Nombre}-{docente.Apellido}_" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf";
             guardar.Filter = "Archivos pdf (*.pdf)|*.pdf|Todos los archivos (*.*)|*.*";
             //guardar.ShowDialog();
             string paginahtml_text = Properties.Resources.Plantilla.ToString();

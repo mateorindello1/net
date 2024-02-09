@@ -36,6 +36,7 @@
             dgvPlanes = new DataGridView();
             cmbEspecialidad = new ComboBox();
             lblFilter = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPlanes).BeginInit();
             SuspendLayout();
             // 
@@ -132,12 +133,24 @@
             lblFilter.TabIndex = 19;
             lblFilter.Text = "Filtrar por especialidad:";
             // 
+            // button1
+            // 
+            button1.Font = new Font("Bahnschrift", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(469, 27);
+            button1.Name = "button1";
+            button1.Size = new Size(166, 39);
+            button1.TabIndex = 20;
+            button1.Text = "Generar reporte";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FormPlan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = button2;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(lblFilter);
             Controls.Add(cmbEspecialidad);
             Controls.Add(button2);
@@ -167,5 +180,6 @@
         private DataGridView dgvPlanes;
         private ComboBox cmbEspecialidad;
         private Label lblFilter;
+        private Button button1;
     }
 }
