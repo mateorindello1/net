@@ -2,8 +2,10 @@ using WinFormsAcademia.FormularioEspecialidad;
 using WinFormsAcademia.FormularioMateria;
 using WinFormsAcademia.FormularioPersona;
 using WinFormsAcademia.FormularioPlan;
+using WinFormsAcademia.FormularioCursosDocente;
 using Entidades;
 using System.Windows.Forms;
+using WinFormsAcademia.FormularioCargaNotas;
 
 namespace WinFormsAcademia
 {
@@ -49,14 +51,10 @@ namespace WinFormsAcademia
 
         }
 
-        private void btnCursos_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnNotas_Click(object sender, EventArgs e)
         {
-
+            CargaNotas cargaNotasForm = new CargaNotas(this.docente);
+            cargaNotasForm.Show();
         }
         private void mostrarForm(Form form)
         {
@@ -68,6 +66,12 @@ namespace WinFormsAcademia
             );
             form.ShowDialog();
             this.Show();
+        }
+
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
+            MostrarCursosDocentes mostrarCursosForm = new MostrarCursosDocentes(this.docente);
+            mostrarCursosForm.Show();
         }
     }
 }

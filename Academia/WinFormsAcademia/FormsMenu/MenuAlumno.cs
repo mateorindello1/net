@@ -7,6 +7,7 @@ using Entidades;
 using System.Windows.Forms;
 using WinFormsAcademia.FormsMenu;
 using WinFormsAcademia.Servicios;
+using WinFormsAcademia.FormularioNotaAlumno;
 
 namespace WinFormsAcademia
 {
@@ -55,7 +56,8 @@ namespace WinFormsAcademia
 
         private void btnNotas_Click(object sender, EventArgs e)
         {
-
+            NotasAlumno notasAlumnoForm = new NotasAlumno(this.alumno);
+            notasAlumnoForm.Show();
         }
         private void mostrarForm(Form form)
         {
@@ -72,6 +74,11 @@ namespace WinFormsAcademia
         {
             MostrarInscripciones mostrarInscripcionesForm = new MostrarInscripciones(this.alumno);
             mostrarInscripcionesForm.Show();
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -30,12 +30,12 @@
         {
             lblTitle = new Label();
             groupBox2 = new GroupBox();
+            btnMostrarInscripciones = new Button();
             btnNotas = new Button();
             btnInscribirse = new Button();
             button3 = new Button();
             button8 = new Button();
             lblBienvenido = new Label();
-            btnMostrarInscripciones = new Button();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,6 +59,17 @@
             groupBox2.Size = new Size(703, 312);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
+            // 
+            // btnMostrarInscripciones
+            // 
+            btnMostrarInscripciones.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMostrarInscripciones.Location = new Point(254, 129);
+            btnMostrarInscripciones.Name = "btnMostrarInscripciones";
+            btnMostrarInscripciones.Size = new Size(200, 44);
+            btnMostrarInscripciones.TabIndex = 4;
+            btnMostrarInscripciones.Text = "Mis inscripciones";
+            btnMostrarInscripciones.UseVisualStyleBackColor = true;
+            btnMostrarInscripciones.Click += btnMostrarInscripciones_Click;
             // 
             // btnNotas
             // 
@@ -102,6 +113,8 @@
             button8.Name = "button8";
             button8.Size = new Size(118, 26);
             button8.TabIndex = 8;
+            button8.Text = "Salir";
+            button8.Click += button8_Click_1;
             // 
             // lblBienvenido
             // 
@@ -113,17 +126,6 @@
             lblBienvenido.TabIndex = 9;
             lblBienvenido.Text = "Bienvenido, nombre y apellido";
             lblBienvenido.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // btnMostrarInscripciones
-            // 
-            btnMostrarInscripciones.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnMostrarInscripciones.Location = new Point(254, 129);
-            btnMostrarInscripciones.Name = "btnMostrarInscripciones";
-            btnMostrarInscripciones.Size = new Size(200, 44);
-            btnMostrarInscripciones.TabIndex = 4;
-            btnMostrarInscripciones.Text = "Mis inscripciones";
-            btnMostrarInscripciones.UseVisualStyleBackColor = true;
-            btnMostrarInscripciones.Click += btnMostrarInscripciones_Click;
             // 
             // MenuAlumno
             // 
