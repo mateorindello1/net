@@ -82,6 +82,17 @@
             btnNotas.UseVisualStyleBackColor = true;
             btnNotas.Click += btnNotas_Click;
             // 
+            // btnCursos
+            // 
+            btnCursos.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCursos.Location = new Point(254, 129);
+            btnCursos.Name = "btnCursos";
+            btnCursos.Size = new Size(200, 44);
+            btnCursos.TabIndex = 1;
+            btnCursos.Text = "Mis cursos";
+            btnCursos.UseVisualStyleBackColor = true;
+            btnCursos.Click += btnCursos_Click;
+            // 
             // btnInscribirse
             // 
             btnInscribirse.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);

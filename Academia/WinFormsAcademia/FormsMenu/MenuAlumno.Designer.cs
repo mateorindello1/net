@@ -34,7 +34,7 @@
             btnNotas = new Button();
             btnInscribirse = new Button();
             button3 = new Button();
-            button8 = new Button();
+            btnExit = new Button();
             lblBienvenido = new Label();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -104,17 +104,17 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
-            // button8
+            // btnExit
             // 
-            button8.DialogResult = DialogResult.Abort;
-            button8.FlatAppearance.BorderColor = Color.Black;
-            button8.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button8.Location = new Point(367, 429);
-            button8.Name = "button8";
-            button8.Size = new Size(118, 26);
-            button8.TabIndex = 8;
-            button8.Text = "Salir";
-            button8.Click += button8_Click_1;
+            btnExit.DialogResult = DialogResult.Abort;
+            btnExit.FlatAppearance.BorderColor = Color.Black;
+            btnExit.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnExit.Location = new Point(367, 429);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(118, 26);
+            btnExit.TabIndex = 8;
+            btnExit.Text = "Salir";
+            btnExit.Click += btnExit_Click;
             // 
             // lblBienvenido
             // 
@@ -131,10 +131,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = button8;
+            CancelButton = btnExit;
             ClientSize = new Size(727, 470);
             Controls.Add(lblBienvenido);
-            Controls.Add(button8);
+            Controls.Add(btnExit);
             Controls.Add(button3);
             Controls.Add(groupBox2);
             Controls.Add(lblTitle);
@@ -153,7 +153,7 @@
         private GroupBox groupBox2;
         private Button btnInscribirse;
         private Button button3;
-        private Button button8;
+        private Button btnExit;
         private Button btnNotas;
         private Label lblBienvenido;
         private Button btnMostrarInscripciones;

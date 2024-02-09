@@ -15,6 +15,7 @@ namespace WinFormsAcademia
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             var fondo = new Fondo();
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             Application.Run(fondo);
         }
     }

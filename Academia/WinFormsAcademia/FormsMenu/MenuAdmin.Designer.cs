@@ -39,18 +39,11 @@
             btnTodos = new Button();
             btnDocentes = new Button();
             btnAlumnos = new Button();
-            btnReporteCursos = new Button();
-            groupBox2 = new GroupBox();
-            btnInscripcionMaterias = new Button();
-            groupBox3 = new GroupBox();
-            btnRegistroNotas = new Button();
             btnCerrarSesion = new Button();
             btnExit = new Button();
             groupBox4 = new GroupBox();
             lblBienvenido = new Label();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
             SuspendLayout();
             // 
@@ -103,7 +96,7 @@
             groupBox1.Controls.Add(btnEspecialidades);
             groupBox1.Controls.Add(btnPlanes);
             groupBox1.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(258, 72);
+            groupBox1.Location = new Point(374, 72);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(210, 312);
             groupBox1.TabIndex = 4;
@@ -173,56 +166,6 @@
             btnAlumnos.UseVisualStyleBackColor = true;
             btnAlumnos.Click += btnAlumnos_Click;
             // 
-            // btnReporteCursos
-            // 
-            btnReporteCursos.Location = new Point(11, 109);
-            btnReporteCursos.Name = "btnReporteCursos";
-            btnReporteCursos.Size = new Size(189, 44);
-            btnReporteCursos.TabIndex = 5;
-            btnReporteCursos.Text = "Reporte de cursos";
-            btnReporteCursos.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(btnInscripcionMaterias);
-            groupBox2.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox2.Location = new Point(487, 272);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(212, 112);
-            groupBox2.TabIndex = 5;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Alumnos";
-            // 
-            // btnInscripcionMaterias
-            // 
-            btnInscripcionMaterias.Location = new Point(11, 40);
-            btnInscripcionMaterias.Name = "btnInscripcionMaterias";
-            btnInscripcionMaterias.Size = new Size(189, 44);
-            btnInscripcionMaterias.TabIndex = 0;
-            btnInscripcionMaterias.Text = "Inscripción a materias";
-            btnInscripcionMaterias.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(btnReporteCursos);
-            groupBox3.Controls.Add(btnRegistroNotas);
-            groupBox3.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox3.Location = new Point(487, 72);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(212, 184);
-            groupBox3.TabIndex = 6;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Profesores";
-            // 
-            // btnRegistroNotas
-            // 
-            btnRegistroNotas.Location = new Point(11, 43);
-            btnRegistroNotas.Name = "btnRegistroNotas";
-            btnRegistroNotas.Size = new Size(189, 44);
-            btnRegistroNotas.TabIndex = 0;
-            btnRegistroNotas.Text = "Registro de notas";
-            btnRegistroNotas.UseVisualStyleBackColor = true;
-            // 
             // btnCerrarSesion
             // 
             btnCerrarSesion.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -253,7 +196,7 @@
             groupBox4.Controls.Add(btnTodos);
             groupBox4.Controls.Add(btnAlumnos);
             groupBox4.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox4.Location = new Point(28, 72);
+            groupBox4.Location = new Point(144, 72);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(210, 312);
             groupBox4.TabIndex = 9;
@@ -281,8 +224,6 @@
             Controls.Add(groupBox4);
             Controls.Add(btnExit);
             Controls.Add(btnCerrarSesion);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(lblTitle);
             FormBorderStyle = FormBorderStyle.None;
@@ -292,8 +233,6 @@
             FormClosed += MenuAdmin_FormClosed;
             Load += MenuAdmin_Load;
             groupBox1.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -305,13 +244,8 @@
         private Button btnPlanes;
         private Button btnEspecialidades;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private Button btnInscripcionMaterias;
-        private GroupBox groupBox3;
-        private Button btnRegistroNotas;
         private Button btnCerrarSesion;
         private Button btnMaterias;
-        private Button btnReporteCursos;
         private Button btnExit;
         private Button btnComisiones;
         private Button btnDocentes;

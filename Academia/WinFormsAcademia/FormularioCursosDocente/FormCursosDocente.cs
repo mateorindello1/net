@@ -7,6 +7,7 @@ namespace WinFormsAcademia.FormularioCursosDocente
     public partial class FormCursosDocente : Form
     {
         private Persona docente;
+        private List<Curso> cursoList;
         public FormCursosDocente(Persona docente)
         {
             InitializeComponent();
@@ -14,7 +15,6 @@ namespace WinFormsAcademia.FormularioCursosDocente
         }
         private async void List()
         {
-
             dgvCursos.DataSource = await CursoServicios.GetByDocente(docente.Legajo);
             dgvCursos.Columns["Dictados"].Visible = false;
             dgvCursos.Columns["Id"].Visible = false;

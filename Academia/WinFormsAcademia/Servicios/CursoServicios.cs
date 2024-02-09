@@ -65,7 +65,7 @@ namespace WinFormsAcademia.Servicios
         }
         public static async Task<List<Curso>> GetByDocente(int legajo)
         {
-            string requestUri = baseUrl + $"/GetCursosByDocente?legajo={legajo}";
+            string requestUri = baseUrl + $"/?legajoDocente={legajo}";
             var response = await httpClient.GetAsync($"{requestUri}");
             if (response.IsSuccessStatusCode)
             {
