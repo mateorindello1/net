@@ -4,6 +4,15 @@
     <Compile Update="Fondo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormularioCargaNotas\CargaNotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormularioCargaNotas\ResumenNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormularioCursosDocente\MostrarCursosDocentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormularioInscripcion\InscripcionCorrecta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -29,6 +38,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormularioMateria\FormMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormularioNotaAlumno\NotasAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormularioPersona\AgregarEditarPersona.cs">

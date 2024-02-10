@@ -30,8 +30,8 @@
         {
             lblTitle = new Label();
             groupBox2 = new GroupBox();
-            btnNotas = new Button();
             btnCursos = new Button();
+            btnNotas = new Button();
             btnInscribirse = new Button();
             button3 = new Button();
             button8 = new Button();
@@ -51,14 +51,25 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btnNotas);
             groupBox2.Controls.Add(btnCursos);
+            groupBox2.Controls.Add(btnNotas);
             groupBox2.Controls.Add(btnInscribirse);
             groupBox2.Location = new Point(12, 72);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(703, 312);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
+            // 
+            // btnCursos
+            // 
+            btnCursos.Font = new Font("Bahnschrift SemiLight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCursos.Location = new Point(254, 130);
+            btnCursos.Name = "btnCursos";
+            btnCursos.Size = new Size(200, 44);
+            btnCursos.TabIndex = 3;
+            btnCursos.Text = "Mis inscripciones";
+            btnCursos.UseVisualStyleBackColor = true;
+            btnCursos.Click += btnCursos_Click;
             // 
             // btnNotas
             // 
@@ -156,7 +167,7 @@
         private Button button3;
         private Button button8;
         private Button btnNotas;
-        private Button btnCursos;
         private Label lblBienvenido;
+        private Button btnCursos;
     }
 }

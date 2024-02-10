@@ -5,6 +5,7 @@ using iTextSharp.tool.xml;
 using iTextSharp.text;
 using PdfiumViewer;
 using System.Windows.Forms;
+using WinFormsAcademia.FormularioCargaNotas;
 using System.Diagnostics;
 using WinFormsAcademia.FormularioPersona;
 using WinFormsAcademia.FormularioCursosDocente;
@@ -113,7 +114,8 @@ namespace WinFormsAcademia
 
         private void btnNotas_Click(object sender, EventArgs e)
         {
-
+            CargaNotas cargaNotasForm = new CargaNotas(this.docente);
+            cargaNotasForm.Show();
         }
         private void mostrarForm(Form form)
         {

@@ -74,7 +74,7 @@ namespace WinFormsAcademia.FormularioComision
             cmbMateria.DataSource = displayList;
             cmbMateria.DisplayMember = "DisplayText"; // Establece la propiedad que se mostrará en el ComboBox
             cmbMateria.ValueMember = "IdMateria"; // Establece la propiedad que se utilizará como valor seleccionado
-            if (cmbMateria.Items.Count > 0) { cmbMateria.SelectedIndex = 0; } else { cmbMateria.Enabled = false; }
+            if (cmbMateria.Items.Count > 0) { cmbMateria.Enabled = true; cmbMateria.SelectedIndex = 0; } else { cmbMateria.Enabled = false; }
             if (editMode) { cmbMateria.SelectedValue = comisionAEditar.IdMateria; }
         }
 
