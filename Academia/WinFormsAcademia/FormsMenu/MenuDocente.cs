@@ -128,11 +128,5 @@ namespace WinFormsAcademia
             form.ShowDialog();
             this.Show();
         }
-
-        private void btnCursos_Click(object sender, EventArgs e)
-        {
-            MostrarCursosDocentes mostrarCursosForm = new MostrarCursosDocentes(this.docente);
-            mostrarCursosForm.Show();
-        }
     }
 }
